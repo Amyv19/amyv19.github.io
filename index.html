@@ -1,376 +1,1179 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Amy Valentina | CV</title>
 
 <style>
-:root{
---bg1:#0b1220;
---bg2:#0a1a3a;
---card:rgba(255,255,255,.08);
---line:rgba(255,255,255,.14);
---text:#eaf0ff;
---muted:#b8c4ff;
---brand:#6c7cff;
---brand2:#22d3ee;
---radius:18px;
-}
+  :root{
+    --bg1:#0b1220;
+    --bg2:#0a1a3a;
+    --card: rgba(255,255,255,.08);
+    --card2: rgba(255,255,255,.06);
+    --line: rgba(255,255,255,.14);
+    --text:#eaf0ff;
+    --muted:#b8c4ff;
+    --brand:#6c7cff;
+    --brand2:#22d3ee;
+    --good:#22c55e;
+    --warn:#f59e0b;
+    --shadow: 0 18px 45px rgba(0,0,0,.35);
+    --radius: 18px;
+    --radius2: 22px;
+  }
 
-*{box-sizing:border-box}
-body{
-margin:0;
-font-family:system-ui,Segoe UI,Roboto,Arial;
-color:var(--text);
-background:
-radial-gradient(900px 500px at 10% 10%, rgba(108,124,255,.25), transparent 60%),
-radial-gradient(900px 500px at 90% 20%, rgba(34,211,238,.18), transparent 60%),
-linear-gradient(180deg,var(--bg1),var(--bg2));
-}
+  *{ box-sizing:border-box; }
+  html,body{ height:100%; }
 
-header{
-backdrop-filter:blur(12px);
-background:rgba(10,18,32,.55);
-border-bottom:1px solid rgba(255,255,255,.08);
-}
+  body{
+    margin:0;
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+    color:var(--text);
+    background:
+      radial-gradient(900px 500px at 15% 10%, rgba(108,124,255,.35), transparent 60%),
+      radial-gradient(900px 500px at 90% 20%, rgba(34,211,238,.25), transparent 60%),
+      radial-gradient(900px 500px at 50% 100%, rgba(34,197,94,.16), transparent 60%),
+      linear-gradient(180deg, var(--bg1), var(--bg2));
+    overflow-x:hidden;
+  }
 
-.top{
-max-width:1100px;
-margin:auto;
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:16px;
-}
+  /* Subtle animated background */
+  .bg-orb{
+    position:fixed;
+    inset:auto;
+    width:420px;
+    height:420px;
+    border-radius:999px;
+    filter: blur(55px);
+    opacity:.35;
+    z-index:-1;
+    animation: float 8s ease-in-out infinite;
+  }
+  .orb1{ top:-140px; left:-120px; background: radial-gradient(circle, var(--brand), transparent 60%); }
+  .orb2{ top:80px; right:-140px; background: radial-gradient(circle, var(--brand2), transparent 60%); animation-delay: -2s; }
+  .orb3{ bottom:-180px; left:30%; background: radial-gradient(circle, rgba(245,158,11,.9), transparent 60%); animation-delay:-4s; }
+  @keyframes float{
+    0%,100%{ transform: translate(0,0) scale(1); }
+    50%{ transform: translate(0,-18px) scale(1.04); }
+  }
 
-.brand{
-display:flex;
-align-items:center;
-gap:12px;
-}
+  /* Header */
+  header{
+    position:sticky;
+    top:0;
+    z-index:10;
+    backdrop-filter: blur(12px);
+    background: rgba(10,18,32,.55);
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
 
-.avatar{
-width:50px;
-height:50px;
-border-radius:14px;
-background:#111827;
-display:flex;
-align-items:center;
-justify-content:center;
-font-weight:900;
-}
+  .top{
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 16px 18px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:14px;
+  }
 
-.tabs{
-display:flex;
-gap:10px;
-}
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    min-width: 260px;
+  }
 
-.tab{
-border:1px solid rgba(255,255,255,.1);
-background:rgba(255,255,255,.05);
-padding:8px 14px;
-border-radius:999px;
-cursor:pointer;
-font-weight:700;
-}
+  .avatar{
+    width:56px;
+    height:56px;
+    border-radius: 18px;
+    overflow:hidden;
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.10);
+    box-shadow: 0 10px 28px rgba(0,0,0,.25);
+    flex:0 0 auto;
+    display:grid;
+    place-items:center;
+  }
+  .avatar img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .avatar .fallback{
+    font-weight:900;
+    letter-spacing:.5px;
+    color: rgba(255,255,255,.85);
+  }
 
-.tab.active{
-background:linear-gradient(135deg,#6c7cff55,#22d3ee33);
-}
+  .title h1{
+    margin:0;
+    font-size: 14.5px;
+    letter-spacing:.2px;
+    font-weight: 950;
+  }
+  .title p{
+    margin:4px 0 0;
+    color: rgba(234,240,255,.72);
+    font-size: 12.5px;
+    font-weight: 700;
+  }
 
-main{
-max-width:1100px;
-margin:auto;
-padding:24px;
-display:grid;
-grid-template-columns:1.3fr .7fr;
-gap:18px;
-}
+  .tabs{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    justify-content:flex-end;
+  }
+  .tab{
+    appearance:none;
+    border: 1px solid rgba(255,255,255,.10);
+    background: rgba(255,255,255,.06);
+    color: rgba(234,240,255,.88);
+    padding: 9px 12px;
+    border-radius: 999px;
+    font-weight: 900;
+    font-size: 12.5px;
+    cursor:pointer;
+    transition: transform .12s ease, background .2s ease, border-color .2s ease, box-shadow .2s ease;
+    user-select:none;
+  }
+  .tab:hover{
+    transform: translateY(-1px);
+    background: rgba(255,255,255,.10);
+    border-color: rgba(255,255,255,.18);
+    box-shadow: 0 12px 24px rgba(0,0,0,.25);
+  }
+  .tab.active{
+    background: linear-gradient(135deg, rgba(108,124,255,.30), rgba(34,211,238,.20));
+    border-color: rgba(108,124,255,.55);
+  }
 
-.card{
-background:var(--card);
-border:1px solid rgba(255,255,255,.1);
-border-radius:var(--radius);
-padding:16px;
-}
+  main{
+    max-width:1120px;
+    margin: 0 auto;
+    padding: 22px 18px 70px;
+  }
 
-.hero h2{
-margin:0;
-font-size:22px;
-}
+  .grid{
+    display:grid;
+    grid-template-columns: 1.25fr .75fr;
+    gap:16px;
+    align-items:start;
+  }
 
-.muted{
-color:rgba(234,240,255,.75);
-font-size:14px;
-}
+  @media (max-width: 980px){
+    .grid{ grid-template-columns:1fr; }
+    .tabs{ justify-content:flex-start; }
+    .top{ flex-direction:column; align-items:flex-start; }
+  }
 
-.badges{
-display:flex;
-flex-wrap:wrap;
-gap:8px;
-margin-top:10px;
-}
+  .card{
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,.10);
+    border-radius: var(--radius2);
+    box-shadow: var(--shadow);
+    padding: 16px;
+    overflow:hidden;
+    position:relative;
+  }
 
-.chip{
-display:flex;
-align-items:center;
-gap:6px;
-padding:6px 10px;
-border-radius:999px;
-border:1px solid rgba(255,255,255,.1);
-background:rgba(255,255,255,.05);
-font-size:12px;
-font-weight:700;
-}
+  .card::before{
+    content:"";
+    position:absolute;
+    inset:-2px;
+    background: radial-gradient(700px 260px at 20% 0%, rgba(108,124,255,.22), transparent 55%);
+    pointer-events:none;
+  }
 
-.logo{
-width:16px;
-height:16px;
-}
+  .card h2{
+    margin:0 0 10px;
+    font-size: 16px;
+    letter-spacing:.2px;
+  }
 
-.btns{
-margin-top:10px;
-display:flex;
-gap:8px;
-}
+  .muted{ color: rgba(234,240,255,.72); font-size: 13px; line-height:1.6; }
 
-.btn{
-padding:8px 12px;
-border-radius:10px;
-border:1px solid rgba(255,255,255,.1);
-background:rgba(255,255,255,.05);
-cursor:pointer;
-text-decoration:none;
-color:white;
-font-weight:700;
-}
+  /* Professional separators */
+  .divider{
+    height:1px;
+    background: rgba(255,255,255,.10);
+    margin: 14px 0;
+  }
 
-.btn.primary{
-background:linear-gradient(135deg,#6c7cff55,#22d3ee33);
-}
+  /* Hero */
+  .hero{
+    display:flex;
+    gap: 14px;
+    align-items:flex-start;
+    justify-content:space-between;
+    flex-wrap:wrap;
+  }
+  .hero-left{
+    min-width: 260px;
+    flex: 1 1 420px;
+  }
+  .hero h2{
+    margin:0;
+    font-size: 20px;
+    font-weight: 950;
+    letter-spacing:.2px;
+  }
+  .hero p{
+    margin:8px 0 0;
+  }
 
-.kpis{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:10px;
-margin-top:16px;
-}
+  /* Hero image */
+  .hero-image{
+    margin-top: 18px;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,.10);
+    box-shadow: 0 20px 40px rgba(0,0,0,.35);
+    position: relative;
+  }
+  .hero-image img{
+    width:100%;
+    height:240px;
+    object-fit:cover;
+    display:block;
+  }
 
-.kpi{
-background:rgba(255,255,255,.05);
-border:1px solid rgba(255,255,255,.1);
-padding:10px;
-border-radius:12px;
-}
+  .badges{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top: 12px;
+  }
+  .chip{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding: 8px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 900;
+    border: 1px solid rgba(255,255,255,.10);
+    background: rgba(255,255,255,.06);
+  }
+  .logo{
+    width:16px;
+    height:16px;
+    object-fit:contain;
+  }
 
-.menu{
-display:flex;
-flex-direction:column;
-gap:8px;
-}
+  /* Buttons */
+  .btns{ display:flex; flex-wrap:wrap; gap:10px; margin-top: 12px; }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding: 10px 12px;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,.10);
+    background: rgba(255,255,255,.06);
+    color: rgba(234,240,255,.92);
+    text-decoration:none;
+    font-weight: 950;
+    font-size: 13px;
+    cursor:pointer;
+    transition: transform .14s ease, background .2s ease, border-color .2s ease;
+    user-select:none;
+  }
+  .btn:hover{
+    transform: translateY(-2px);
+    background: rgba(255,255,255,.10);
+    border-color: rgba(255,255,255,.18);
+  }
+  .btn.primary{
+    background: linear-gradient(135deg, rgba(108,124,255,.35), rgba(34,211,238,.20));
+    border-color: rgba(108,124,255,.55);
+  }
+  .btn.ghost{
+    background: rgba(255,255,255,.04);
+  }
 
-.menu a{
-text-decoration:none;
-padding:8px;
-border-radius:8px;
-background:rgba(255,255,255,.05);
-color:white;
-font-weight:700;
-}
+  .ico{
+    width:18px;height:18px; display:inline-block; flex:0 0 auto;
+    filter: drop-shadow(0 8px 16px rgba(0,0,0,.25));
+  }
 
-.company-logo{
-width:24px;
-height:24px;
-margin-right:8px;
-vertical-align:middle;
-}
+  /* KPI */
+  .kpis{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .kpi{
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.10);
+    border-radius: 16px;
+    padding: 12px;
+    transition: transform .14s ease;
+  }
+  .kpi:hover{ transform: translateY(-2px); }
+  .kpi .big{
+    font-weight: 950;
+    font-size: 13.5px;
+    margin:0;
+  }
+  .kpi .small{
+    margin:6px 0 0;
+    font-size: 12px;
+    color: rgba(234,240,255,.70);
+    line-height: 1.45;
+    font-weight: 700;
+  }
+  @media (max-width: 520px){
+    .kpis{ grid-template-columns:1fr; }
+  }
 
-.exp-item{
-margin-top:10px;
-padding:10px;
-border-radius:10px;
-background:rgba(255,255,255,.05);
-}
+  /* Views */
+  .view{ display:none; }
+  .view.active{
+    display:block;
+    animation: pop .35s ease both;
+  }
+  @keyframes pop{
+    from{ opacity:0; transform: translateY(10px) scale(.99); }
+    to{ opacity:1; transform: translateY(0) scale(1); }
+  }
 
-.view{display:none}
-.view.active{display:block}
+  /* Info blocks */
+  .two{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 10px;
+  }
+  @media (max-width: 720px){
+    .two{ grid-template-columns:1fr; }
+  }
+  .mini{
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.10);
+    border-radius: 16px;
+    padding: 12px;
+  }
+  .mini h3{
+    margin:0 0 6px;
+    font-size: 13px;
+    color: rgba(234,240,255,.92);
+    font-weight: 950;
+  }
+  .mini p{ margin:0; font-size: 13px; color: rgba(234,240,255,.76); line-height:1.6; }
 
+  /* Links */
+  a{ color: rgba(234,240,255,.92); }
+  a:hover{ color: white; }
+
+  /* Sidebar */
+  .side{
+    position: sticky;
+    top: 88px;
+  }
+  .side h2{ margin:0 0 10px; }
+  .menu{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .menu a{
+    text-decoration:none;
+    color: rgba(234,240,255,.86);
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.10);
+    padding: 10px 12px;
+    border-radius: 14px;
+    font-weight: 950;
+    font-size: 13px;
+    transition: transform .12s ease, background .2s ease, border-color .2s ease;
+  }
+  .menu a:hover{ transform: translateY(-2px); background: rgba(255,255,255,.10); border-color: rgba(255,255,255,.18); }
+  .menu a.active{
+    background: linear-gradient(135deg, rgba(108,124,255,.26), rgba(34,211,238,.16));
+    border-color: rgba(108,124,255,.55);
+  }
+
+  .section-title{
+    margin-top: 16px;
+    font-size: 12px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: rgba(234,240,255,.70);
+    font-weight: 900;
+  }
+
+  /* Schedule */
+  .schedule-wrap{ margin-top: 10px; }
+  .legend{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:12px;
+  }
+  .pill{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:6px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 950;
+    border: 1px solid rgba(255,255,255,.10);
+    background: rgba(255,255,255,.06);
+  }
+  .pill span{ width:10px;height:10px;border-radius:999px; display:inline-block; }
+  .pill-work span{ background:#94a3b8; }
+  .pill-class span{ background: var(--brand); }
+  .pill-lab span{ background: var(--brand2); }
+  .pill-hybrid span{ background: var(--warn); }
+  .pill-onsite span{ background: var(--good); }
+
+  .table-scroll{ overflow:auto; border-radius: 16px; }
+  table.schedule{
+    width:100%;
+    min-width: 880px;
+    border-collapse: separate;
+    border-spacing: 10px;
+  }
+  table.schedule thead th{
+    text-align:left;
+    font-size: 12.5px;
+    color: rgba(234,240,255,.90);
+    padding: 10px 12px;
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.10);
+    border-radius: 14px;
+    font-weight: 950;
+  }
+  td.time{
+    font-weight: 950;
+    color: rgba(234,240,255,.92);
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.10);
+    border-radius: 14px;
+    padding: 12px;
+    white-space: nowrap;
+  }
+  td.cell{
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,.10);
+    padding: 12px;
+    vertical-align: top;
+    transition: transform .12s ease, box-shadow .12s ease;
+    background: rgba(255,255,255,.06);
+  }
+  td.cell:hover{ transform: translateY(-2px); box-shadow: 0 12px 24px rgba(0,0,0,.25); }
+  td.work{ background: linear-gradient(180deg, rgba(148,163,184,.14), rgba(255,255,255,.04)); }
+  td.class{ background: linear-gradient(180deg, rgba(108,124,255,.18), rgba(255,255,255,.04)); }
+  td.lab{ background: linear-gradient(180deg, rgba(34,211,238,.16), rgba(255,255,255,.04)); }
+  td.hybrid{ outline: 2px dashed rgba(245,158,11,.45); outline-offset: -6px; }
+  td.onsite{ outline: 2px solid rgba(34,197,94,.25); outline-offset: -6px; }
+  .event-title{ font-weight: 950; font-size: 13px; line-height:1.2; }
+  .event-meta{ margin-top:6px; font-size: 12px; color: rgba(234,240,255,.72); font-weight: 800; }
+
+  /* CV */
+  #view-cv h3{
+    margin: 16px 0 10px;
+    font-size: 13px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: rgba(234,240,255,.72);
+  }
+
+  .exp{
+    margin-top: 10px;
+    display: grid;
+    gap: 12px;
+  }
+
+  .exp-item{
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.10);
+    border-radius: 16px;
+    padding: 12px;
+  }
+
+  .exp-head{
+    display:flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .exp-role{
+    font-weight: 950;
+    font-size: 13.5px;
+  }
+
+  .exp-date{
+    font-weight: 900;
+    font-size: 12px;
+    color: rgba(234,240,255,.70);
+  }
+
+  .exp-sub{
+    margin-top: 6px;
+    font-size: 12.5px;
+    color: rgba(234,240,255,.75);
+    font-weight: 800;
+  }
+
+  .exp-bullets{
+    margin: 10px 0 0;
+    padding-left: 18px;
+    color: rgba(234,240,255,.80);
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .exp-bullets li{ margin: 6px 0; }
+
+  /* Company logo in experience (better with theme) */
+  .company-logo{
+    width:26px;
+    height:26px;
+    border-radius:8px;
+    object-fit:contain;
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.10);
+    padding:4px;
+  }
+
+  /* Footer */
+  footer{
+    max-width:1120px;
+    margin: 0 auto;
+    padding: 20px 18px 40px;
+    color: rgba(234,240,255,.55);
+    font-size: 12px;
+  }
+
+  /* Small utilities */
+  .nowrap{ white-space:nowrap; }
 </style>
 </head>
 
 <body>
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+<div class="bg-orb orb3"></div>
 
 <header>
-<div class="top">
+  <div class="top">
+    <div class="brand">
+      <div class="avatar" id="avatarBox">
+        <img src="assets/img/foto.jpg" alt="Profile photo"
+             onerror="this.remove(); document.getElementById('avatarBox').innerHTML='<div class=&quot;fallback&quot;>AV</div>';">
+      </div>
+      <div class="title">
+        <h1>Amy Valentina Veraza García</h1>
+        <p>Computer Engineering (UNAM) • Junior Developer</p>
+      </div>
+    </div>
 
-<div class="brand">
-<div class="avatar">AV</div>
-<div>
-<b>Amy Valentina Veraza García</b><br>
-<span class="muted">Computer Engineering (UNAM) • Junior Developer</span>
-</div>
-</div>
-
-<div class="tabs">
-<button class="tab active" data-view="home">Overview</button>
-<button class="tab" data-view="info">About</button>
-<button class="tab" data-view="cv">CV</button>
-</div>
-
-</div>
+    <nav class="tabs">
+      <button class="tab active" data-view="home">Overview</button>
+      <button class="tab" data-view="info">About</button>
+      <button class="tab" data-view="schedule">Schedule</button>
+      <button class="tab" data-view="cv">CV</button>
+    </nav>
+  </div>
 </header>
 
-<main>
+<main class="grid">
 
-<section class="card">
+  <!-- LEFT CONTENT -->
+  <section class="card">
 
-<div id="view-home" class="view active">
+    <!-- HOME -->
+    <div class="view active" id="view-home">
+      <div class="hero">
+        <div class="hero-left">
+          <h2>Backend-focused Junior Developer</h2>
+          <p class="muted">
+            I build reliable APIs and web systems with strong attention to validation, data integrity, and clean architecture.
+            Interested in backend engineering, automation, and scalable applications.
+          </p>
 
-<div class="hero">
-<h2>Backend-focused Junior Developer</h2>
-<p class="muted">
-I build reliable APIs and scalable backend systems.
-</p>
-</div>
+          <!-- Hero image -->
+          <div class="hero-image" id="heroBox">
+            <img id="heroImg" src="assets/img/hero-code.jpg" alt="Backend Developer Workspace">
+          </div>
 
-<div class="badges">
-<div class="chip"><img class="logo" data-logo="laravel">Laravel</div>
-<div class="chip"><img class="logo" data-logo="node">Node.js</div>
-<div class="chip"><img class="logo" data-logo="postgres">PostgreSQL</div>
-<div class="chip"><img class="logo" data-logo="docker">Docker</div>
-<div class="chip"><img class="logo" data-logo="git">Git</div>
-</div>
+          <div class="badges">
+            <!-- Keep your src paths, but add data-logo so the fallback works automatically -->
+            <div class="chip"><img class="logo" data-logo="laravel" src="assets/logos/laravel.svg" alt="Laravel">Laravel</div>
+            <div class="chip"><img class="logo" data-logo="nodejs" src="assets/logos/nodejs.svg" alt="Node.js">Node.js</div>
+            <div class="chip"><img class="logo" data-logo="postgresql" src="assets/logos/postgresql.svg" alt="PostgreSQL">PostgreSQL</div>
+            <div class="chip"><img class="logo" data-logo="docker" src="assets/logos/docker.svg" alt="Docker">Docker</div>
+            <div class="chip"><img class="logo" data-logo="git" src="assets/logos/git.svg" alt="Git">Git</div>
+          </div>
 
-<div class="btns">
-<button class="btn primary" onclick="openView('cv')">Open CV</button>
-<a class="btn" href="https://github.com/Amyv19" target="_blank">GitHub</a>
-</div>
+          <div class="btns">
+            <button class="btn primary" data-jump="cv">
+              <svg class="ico" viewBox="0 0 24 24" fill="none"><path d="M7 7h10M7 11h10M7 15h7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              Open CV
+            </button>
 
-<div class="kpis">
+            <a class="btn" href="assets/docs/CV_AmyValentina.pdf" target="_blank" rel="noopener">
+              <svg class="ico" viewBox="0 0 24 24" fill="none"><path d="M12 3v10m0 0l4-4m-4 4l-4-4M5 21h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Download PDF
+            </a>
 
-<div class="kpi">
-<b>Backend</b><br>
-<span class="muted">Laravel • Node • PostgreSQL</span>
-</div>
+            <a class="btn ghost" href="https://github.com/Amyv19" target="_blank" rel="noopener">
+              <svg class="ico" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.64 2 12.35c0 4.56 2.87 8.43 6.84 9.8.5.1.68-.22.68-.48 0-.24-.01-.87-.01-1.71-2.78.62-3.36-1.38-3.36-1.38-.46-1.2-1.11-1.52-1.11-1.52-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.58 2.36 1.12 2.94.86.09-.67.35-1.12.64-1.38-2.22-.26-4.56-1.15-4.56-5.13 0-1.13.39-2.05 1.03-2.77-.1-.26-.45-1.31.1-2.74 0 0 .85-.28 2.79 1.06.81-.23 1.67-.35 2.53-.35.86 0 1.72.12 2.53.35 1.94-1.34 2.79-1.06 2.79-1.06.55 1.43.2 2.48.1 2.74.64.72 1.03 1.64 1.03 2.77 0 3.99-2.34 4.86-4.57 5.12.36.32.68.95.68 1.92 0 1.39-.01 2.51-.01 2.85 0 .26.18.59.69.48A10.2 10.2 0 0 0 22 12.35C22 6.64 17.52 2 12 2Z" fill="currentColor"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+      </div>
 
-<div class="kpi">
-<b>Hackathons</b><br>
-<span class="muted">Rapid prototyping</span>
-</div>
+      <div class="divider"></div>
 
-<div class="kpi">
-<b>Languages</b><br>
-<span class="muted">Spanish / English</span>
-</div>
+      <div class="kpis">
+        <div class="kpi">
+          <p class="big">Backend / Full Stack</p>
+          <p class="small">Laravel • .NET • PostgreSQL • Spring Boot • Node.js</p>
+        </div>
+        <div class="kpi">
+          <p class="big">Hackathons</p>
+          <p class="small">International Winner • Rapid prototyping & delivery</p>
+        </div>
+        <div class="kpi">
+          <p class="big">Languages</p>
+          <p class="small">Spanish (Native) • English (B2)</p>
+        </div>
+      </div>
+    </div>
 
-</div>
+    <!-- INFO -->
+    <div class="view" id="view-info">
+      <h2>About</h2>
+      <p class="muted">
+        I’m a Computer Engineering student at UNAM with professional experience in web development.
+        I enjoy building backend systems, designing databases, and delivering features with clean code and strong validations.
+      </p>
 
-</div>
+      <div class="divider"></div>
 
-<div id="view-info" class="view">
+      <div class="two">
+        <div class="mini">
+          <h3>Focus</h3>
+          <p>Backend development, APIs, database design, validation, and automation.</p>
+        </div>
+        <div class="mini">
+          <h3>Strengths</h3>
+          <p>Ownership, fast learning, problem-solving, and clear documentation.</p>
+        </div>
+      </div>
 
-<h2>About</h2>
+      <div class="two">
+        <div class="mini">
+          <h3>Contact</h3>
+          <p>
+            <b>Email:</b> <span class="nowrap">your_email@comunidad.unam.mx</span><br/>
+            <b>Location:</b> Mexico City<br/>
+            <b>GitHub:</b> <a href="https://github.com/Amyv19" target="_blank" rel="noopener">github.com/Amyv19</a>
+          </p>
+        </div>
+        <div class="mini">
+          <h3>Availability</h3>
+          <p>Open to internships / junior backend roles and project-based collaborations.</p>
+        </div>
+      </div>
+    </div>
 
-<p class="muted">
-Computer Engineering student at UNAM interested in backend engineering, APIs, and scalable systems.
-</p>
+    <!-- SCHEDULE -->
+    <div class="view" id="view-schedule">
+      <h2>Weekly Schedule</h2>
+      <p class="muted">All free time slots are marked as <b>Work</b>.</p>
 
-</div>
+      <div class="schedule-wrap">
+        <div class="legend">
+          <div class="pill pill-work"><span></span>Work</div>
+          <div class="pill pill-class"><span></span>Class</div>
+          <div class="pill pill-lab"><span></span>Lab</div>
+          <div class="pill pill-hybrid"><span></span>Hybrid</div>
+          <div class="pill pill-onsite"><span></span>On-site</div>
+        </div>
 
-<div id="view-cv" class="view">
+        <div class="table-scroll">
+          <table class="schedule" id="scheduleTable">
+            <thead>
+              <tr>
+                <th style="width:140px;">Time</th>
+                <th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th>
+              </tr>
+            </thead>
+            <tbody id="scheduleBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
 
-<h2>Professional Experience</h2>
+    <!-- CV -->
+    <div class="view" id="view-cv">
+      <h2>Curriculum Vitae</h2>
+      <p class="muted">Structured overview.</p>
 
-<div class="exp-item">
-<img class="company-logo" data-logo="3d"> Junior Developer — 3Demak
-</div>
+      <div class="divider"></div>
 
-<div class="exp-item">
-<img class="company-logo" data-logo="vc"> Junior Developer — Vincourt y Cia
-</div>
+      <div class="mini">
+        <h3>Summary</h3>
+        <p>
+          Junior developer with experience in web development and technical support.
+          Strong in backend + frontend with PHP (Laravel/Symfony), .NET (C#), JavaScript, and databases.
+        </p>
+      </div>
 
-<div class="exp-item">
-<img class="company-logo" data-logo="ct"> Junior Developer — CTSolutions
-</div>
+      <div class="two">
+        <div class="mini">
+          <h3>Education</h3>
+          <p>
+            <img data-logo="unam" src="assets/logos/unam.png" class="company-logo" alt="UNAM">
+            <b>Computer Engineering</b> – UNAM (In progress)
+          </p>
+        </div>
+        <div class="mini">
+          <h3>Core Stack</h3>
+          <p>Laravel • Node.js • TypeScript • PostgreSQL • Docker • Git</p>
+        </div>
+      </div>
 
-<div class="exp-item">
-<img class="company-logo" data-logo="ak"> Full Stack Intern — AK Agencia
-</div>
+      <h3>Professional Experience</h3>
 
-<div class="exp-item">
-<img class="company-logo" data-logo="gch"> Support Engineer — GCH Tecnología
-</div>
+      <div class="exp">
+        <div class="exp-item">
+          <div class="exp-head">
+            <div style="display:flex; align-items:center; gap:10px;">
+              <img data-logo="3demak" src="assets/logos/3demak.png" class="company-logo" alt="3Demak">
+              <span class="exp-role">Junior Developer</span>
+            </div>
+            <span class="exp-date">Feb 2026 – Present</span>
+          </div>
+          <div class="exp-sub">3Demak • Full-time • Remote</div>
+          <ul class="exp-bullets">
+            <li>Web development support and feature implementation (backend/front-end as needed).</li>
+            <li>Collaborated with the team to deliver updates and fixes.</li>
+          </ul>
+        </div>
 
-</div>
+        <div class="exp-item">
+          <div class="exp-head">
+            <div style="display:flex; align-items:center; gap:10px;">
+              <img data-logo="vincourt" src="assets/logos/vincourt.png" class="company-logo" alt="Vincourt y Cia">
+              <span class="exp-role">Junior Developer</span>
+            </div>
+            <span class="exp-date">Feb 2026 – Present</span>
+          </div>
+          <div class="exp-sub">Vincourt y Cia S.A. de C.V.</div>
+          <ul class="exp-bullets">
+            <li>Development tasks for internal/assigned projects (backend/front-end).</li>
+            <li>Delivered changes under deadlines with version control.</li>
+          </ul>
+        </div>
 
-</section>
+        <div class="exp-item">
+          <div class="exp-head">
+            <div style="display:flex; align-items:center; gap:10px;">
+              <img data-logo="ctsolutions" src="assets/logos/ctsolutions.png" class="company-logo" alt="CTSolutions">
+              <span class="exp-role">Junior Software Developer</span>
+            </div>
+            <span class="exp-date">Dec 2024 – Jan 2026</span>
+          </div>
+          <div class="exp-sub">CTSolutions • Full-time • Mexico City (Hybrid)</div>
+          <ul class="exp-bullets">
+            <li>Backend development with PHP (Laravel, Symfony; basic CodeIgniter) and .NET (C#).</li>
+            <li>Implemented APIs, business logic, controllers/routes/validation, and database design.</li>
+            <li>Frontend work with HTML/CSS/JavaScript, AJAX and jQuery; support in React.</li>
+            <li>Worked with SQL Server and PostgreSQL; Jira tickets; Scrum workflow.</li>
+          </ul>
+        </div>
 
-<aside class="card">
+        <div class="exp-item">
+          <div class="exp-head">
+            <div style="display:flex; align-items:center; gap:10px;">
+              <img data-logo="ak" src="assets/logos/ak.png" class="company-logo" alt="AK Agencia">
+              <span class="exp-role">Full Stack Developer Intern</span>
+            </div>
+            <span class="exp-date">Aug 2024 – Jan 2025</span>
+          </div>
+          <div class="exp-sub">AK Agencia • Part-time • Mexico City</div>
+          <ul class="exp-bullets">
+            <li>Frontend + backend support with PHP (Laravel).</li>
+            <li>WordPress administration and feature implementation.</li>
+            <li>Automation support with Python and basic SQL queries.</li>
+          </ul>
+        </div>
 
-<h3>Navigation</h3>
+        <div class="exp-item">
+          <div class="exp-head">
+            <div style="display:flex; align-items:center; gap:10px;">
+              <img data-logo="gch" src="assets/logos/gch.png" class="company-logo" alt="GCH Tecnología">
+              <span class="exp-role">Support Engineer / Web Support</span>
+            </div>
+            <span class="exp-date">Apr 2024 – Sep 2024</span>
+          </div>
+          <div class="exp-sub">GCH Tecnología • Part-time • Mexico City</div>
+          <ul class="exp-bullets">
+            <li>On-site and remote support; preventive/corrective maintenance.</li>
+            <li>Basic WordPress administration and basic database support.</li>
+            <li>Documentation and basic Linux/Windows support.</li>
+          </ul>
+        </div>
+      </div>
 
-<div class="menu">
-<a href="#" onclick="openView('home')">Overview</a>
-<a href="#" onclick="openView('info')">About</a>
-<a href="#" onclick="openView('cv')">CV</a>
-</div>
+      <div class="two">
+        <div class="mini">
+          <h3>Programming Languages</h3>
+          <p>PHP, C#, JavaScript, TypeScript, Python, SQL</p>
+        </div>
+        <div class="mini">
+          <h3>Tools</h3>
+          <p>Git, Jira, Postman, Docker, Linux, VS Code</p>
+        </div>
+      </div>
 
-</aside>
+      <div class="mini">
+        <h3>Training / Certifications</h3>
+        <p class="muted">Place your PDFs inside <b>assets/docs/</b> and link them here:</p>
+        <ul>
+          <li><a class="btn" href="assets/docs/SFPC.pdf" target="_blank" rel="noopener">Scrum Foundation (PDF)</a></li>
+          <li><a class="btn" href="assets/docs/Hackathon_META.pdf" target="_blank" rel="noopener">Hackathon META Winner (PDF)</a></li>
+        </ul>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- RIGHT SIDEBAR -->
+  <aside class="card side">
+    <h2>Navigation</h2>
+    <div class="menu">
+      <a href="#" class="active" data-open="home">Overview</a>
+      <a href="#" data-open="info">About</a>
+      <a href="#" data-open="cv">CV</a>
+      <a href="#" data-open="schedule">Schedule</a>
+    </div>
+
+    <div class="section-title">Quick Actions</div>
+    <div class="btns">
+      <button class="btn" data-jump="home">Home</button>
+      <button class="btn" data-jump="cv">CV</button>
+      <button class="btn primary" data-jump="schedule">Schedule</button>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="mini">
+      <h3>Public URL</h3>
+      <p class="muted"><b>amyv19.github.io</b></p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="mini">
+      <h3>Assets Folder</h3>
+      <p class="muted" style="margin-top:8px;">
+        Place your files here:
+        <br><b>assets/img/foto.jpg</b> (avatar)
+        <br><b>assets/img/hero-code.jpg</b> (hero banner)
+        <br><b>assets/logos/*.svg</b> (tech logos)
+        <br><b>assets/logos/*.png</b> (company logos)
+      </p>
+    </div>
+
+  </aside>
 
 </main>
 
+<footer>
+  National Autonomous University of Mexico — Secure Data Networks • Webpage (HTML → URL → Email)
+</footer>
+
 <script>
+  // =============================
+  // Navigation
+  // =============================
+  const tabs = document.querySelectorAll(".tab");
+  const menuLinks = document.querySelectorAll(".menu a");
 
-/* Navigation */
+  const views = {
+    home: document.getElementById("view-home"),
+    info: document.getElementById("view-info"),
+    schedule: document.getElementById("view-schedule"),
+    cv: document.getElementById("view-cv"),
+  };
 
-const tabs=document.querySelectorAll(".tab")
+  function setActiveNav(name){
+    tabs.forEach(t => t.classList.toggle("active", t.dataset.view === name));
+    menuLinks.forEach(a => a.classList.toggle("active", a.dataset.open === name));
+  }
 
-tabs.forEach(t=>{
-t.onclick=()=>openView(t.dataset.view)
-})
+  function openView(name){
+    Object.values(views).forEach(v => v.classList.remove("active"));
+    views[name].classList.add("active");
+    setActiveNav(name);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
 
-function openView(name){
+  tabs.forEach(t => t.addEventListener("click", () => openView(t.dataset.view)));
 
-document.querySelectorAll(".view").forEach(v=>v.classList.remove("active"))
-document.getElementById("view-"+name).classList.add("active")
+  document.querySelectorAll("[data-jump]").forEach(btn=>{
+    btn.addEventListener("click", ()=> openView(btn.dataset.jump));
+  });
 
-tabs.forEach(t=>t.classList.toggle("active",t.dataset.view===name))
+  document.querySelectorAll("[data-open]").forEach(a=>{
+    a.addEventListener("click", (e)=>{
+      e.preventDefault();
+      openView(a.dataset.open);
+    });
+  });
 
-}
+  // =============================
+  // Inline SVG Logo System
+  // - If your asset file exists, it will load.
+  // - If it doesn't exist, we auto-replace with the embedded SVG.
+  // =============================
 
-/* SVG Logos */
+  function monogram(text, accent){
+    return `
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+        <defs>
+          <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+            <stop stop-color="${accent}" stop-opacity=".95"/>
+            <stop offset="1" stop-color="#0b1220" stop-opacity=".92"/>
+          </linearGradient>
+        </defs>
+        <rect x="6" y="6" width="52" height="52" rx="14" fill="url(#bg)"/>
+        <rect x="6.5" y="6.5" width="51" height="51" rx="14" fill="none" stroke="rgba(255,255,255,.18)"/>
+        <text x="32" y="39" text-anchor="middle"
+              font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial"
+              font-size="${text.length >= 3 ? 16 : 20}"
+              font-weight="950"
+              fill="rgba(234,240,255,.92)">${text}</text>
+      </svg>
+    `.trim();
+  }
 
-const logos={
+  const LogoSVG = {
+    // Tech logos (clean + recognizable style; works small)
+    laravel: `
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+        <defs>
+          <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+            <stop stop-color="#ff6b6b"/><stop offset="1" stop-color="#ff3d3d"/>
+          </linearGradient>
+        </defs>
+        <path fill="url(#g)" d="M10 22l12-7 12 7v14l-12 7-12-7V22zm24 0l12-7 8 5v14l-12 7-8-5V22z"/>
+        <path fill="rgba(255,255,255,.92)" d="M22 22l12 7v14l-12-7V22z"/>
+      </svg>
+    `.trim(),
 
-laravel:`<svg viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="#ff3d3d"/><text x="32" y="40" font-size="26" fill="white" text-anchor="middle" font-weight="bold">L</text></svg>`,
+    nodejs: `
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+        <path fill="#22c55e" d="M32 6l22 13v26L32 58 10 45V19L32 6z"/>
+        <path fill="rgba(255,255,255,.92)" d="M25 22h7c6 0 10 3 10 10s-4 10-10 10h-7V22zm7 5h-2v10h2c3 0 5-1 5-5s-2-5-5-5z"/>
+      </svg>
+    `.trim(),
 
-node:`<svg viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="#22c55e"/><text x="32" y="40" font-size="26" fill="white" text-anchor="middle">N</text></svg>`,
+    postgresql: `
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+        <path fill="#60a5fa" d="M32 8c10 0 18 6 18 14 0 6-4 10-9 12v12c0 4-3 8-9 8s-9-4-9-8V34c-5-2-9-6-9-12C14 14 22 8 32 8z"/>
+        <path fill="rgba(255,255,255,.9)" d="M24 24c0-3 3-6 8-6s8 3 8 6-3 6-8 6-8-3-8-6z"/>
+        <circle cx="28" cy="24" r="1.6" fill="#0b1220"/>
+        <circle cx="36" cy="24" r="1.6" fill="#0b1220"/>
+      </svg>
+    `.trim(),
 
-postgres:`<svg viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="#60a5fa"/><text x="32" y="40" font-size="26" fill="white" text-anchor="middle">PG</text></svg>`,
+    docker: `
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+        <path fill="#22d3ee" d="M14 30h6v6h-6v-6zm8 0h6v6h-6v-6zm8 0h6v6h-6v-6zm8 0h6v6h-6v-6zm-16-8h6v6h-6v-6zm8 0h6v6h-6v-6z"/>
+        <path fill="rgba(255,255,255,.86)" d="M12 40c1 9 10 14 22 14 11 0 20-4 24-12 1-2 1-4 1-6-3 0-6-1-8-3-1 2-3 4-6 4H12v3z"/>
+      </svg>
+    `.trim(),
 
-docker:`<svg viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="#22d3ee"/><text x="32" y="40" font-size="24" fill="white" text-anchor="middle">D</text></svg>`,
+    git: `
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+        <path fill="#f97316" d="M12 32L30 14c1-1 3-1 4 0l18 18c1 1 1 3 0 4L34 54c-1 1-3 1-4 0L12 36c-1-1-1-3 0-4z"/>
+        <path fill="rgba(255,255,255,.92)" d="M34 22a4 4 0 0 0-3 6v8.2a4 4 0 1 0 2 0V30a4 4 0 0 0 1-8zm0 3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-4 18a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+      </svg>
+    `.trim(),
 
-git:`<svg viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="#f97316"/><text x="32" y="40" font-size="26" fill="white" text-anchor="middle">G</text></svg>`,
+    // Company/Institution logos (clean monograms; replace later with real PNGs if you have them)
+    unam: monogram("UNAM", "#6c7cff"),
+    "3demak": monogram("3D", "#22d3ee"),
+    vincourt: monogram("VC", "#b8c4ff"),
+    ctsolutions: monogram("CT", "#22c55e"),
+    ak: monogram("AK", "#f59e0b"),
+    gch: monogram("GCH", "#94a3b8"),
+  };
 
-"3d":`<svg viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="#22d3ee"/><text x="32" y="40" font-size="22" fill="white" text-anchor="middle">3D</text></svg>`,
+  function svgToDataUri(svg){
+    const clean = svg.trim().replace(/\s+/g, " ");
+    return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(clean);
+  }
 
-vc:`<svg viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="#6c7cff"/><text x="32" y="40" font-size="22" fill="white" text-anchor="middle">VC</text></svg>`,
+  function applyInlineLogos(){
+    document.querySelectorAll("img[data-logo]").forEach(img => {
+      const key = img.getAttribute("data-logo");
+      const svg = LogoSVG[key];
+      if (!svg) return;
 
-ct:`<svg viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="#22c55e"/><text x="32" y="40" font-size="22" fill="white" text-anchor="middle">CT</text></svg>`,
+      // If src is missing -> inline immediately.
+      if (!img.getAttribute("src")) {
+        img.src = svgToDataUri(svg);
+        return;
+      }
 
-ak:`<svg viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="#f59e0b"/><text x="32" y="40" font-size="22" fill="white" text-anchor="middle">AK</text></svg>`,
+      // If src exists but fails -> fallback to inline.
+      img.addEventListener("error", () => {
+        img.src = svgToDataUri(svg);
+      }, { once: true });
+    });
+  }
 
-gch:`<svg viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="#94a3b8"/><text x="32" y="40" font-size="20" fill="white" text-anchor="middle">GCH</text></svg>`
+  // Hero banner fallback (in case assets/img/hero-code.jpg is missing)
+  function applyHeroFallback(){
+    const heroImg = document.getElementById("heroImg");
+    if (!heroImg) return;
 
-}
+    heroImg.addEventListener("error", () => {
+      const svg = `
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 450">
+          <defs>
+            <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+              <stop stop-color="#0b1220"/>
+              <stop offset="1" stop-color="#0a1a3a"/>
+            </linearGradient>
+            <radialGradient id="glow1" cx="25%" cy="15%" r="60%">
+              <stop stop-color="#6c7cff" stop-opacity=".35"/>
+              <stop offset="1" stop-color="#6c7cff" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="glow2" cx="85%" cy="20%" r="60%">
+              <stop stop-color="#22d3ee" stop-opacity=".28"/>
+              <stop offset="1" stop-color="#22d3ee" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <rect width="1200" height="450" fill="url(#bg)"/>
+          <rect width="1200" height="450" fill="url(#glow1)"/>
+          <rect width="1200" height="450" fill="url(#glow2)"/>
+          <g opacity=".45">
+            <path d="M80 320h1040" stroke="rgba(255,255,255,.18)" stroke-width="2"/>
+            <path d="M80 270h740" stroke="rgba(255,255,255,.14)" stroke-width="2"/>
+            <path d="M80 220h620" stroke="rgba(255,255,255,.10)" stroke-width="2"/>
+          </g>
+          <g opacity=".9">
+            <text x="80" y="165" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial" font-size="42" font-weight="950" fill="rgba(234,240,255,.92)">
+              Backend Developer Workspace
+            </text>
+            <text x="80" y="215" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial" font-size="22" font-weight="700" fill="rgba(234,240,255,.70)">
+              Clean architecture • APIs • Databases • Reliability
+            </text>
+          </g>
+          <g opacity=".30">
+            <circle cx="1030" cy="115" r="85" fill="#22d3ee"/>
+            <circle cx="980" cy="330" r="110" fill="#6c7cff"/>
+          </g>
+        </svg>
+      `;
+      heroImg.src = svgToDataUri(svg);
+    }, { once: true });
+  }
 
-document.querySelectorAll("img[data-logo]").forEach(img=>{
-const key=img.dataset.logo
-img.src="data:image/svg+xml,"+encodeURIComponent(logos[key])
-})
+  applyInlineLogos();
+  applyHeroFallback();
 
+  // =============================
+  // Schedule generation: everything free = Work
+  // =============================
+  const TIMES = [
+    "07:00–08:00","08:00–09:00","09:00–10:00","10:00–11:00","11:00–12:00","12:00–13:00",
+    "13:00–14:00","14:00–15:00","15:00–16:00","16:00–17:00","17:30–18:00","18:00–19:00","19:00–20:00"
+  ];
+  const DAYS = ["Mon","Tue","Wed","Thu","Fri", "Sat"];
+
+  const EVENTS = [
+    { day:"Mon", time:"07:00–08:00", title:"Text & Image Processing", meta:"On-site", kind:"class", mode:"onsite" },
+    { day:"Mon", time:"08:00–09:00", title:"Text & Image Processing", meta:"On-site", kind:"class", mode:"onsite" },
+
+    { day:"Tue", time:"07:00–08:00", title:"Artificial Intelligence", meta:"On-site", kind:"class", mode:"onsite" },
+    { day:"Tue", time:"08:00–09:00", title:"Artificial Intelligence", meta:"On-site", kind:"class", mode:"onsite" },
+
+    { day:"Wed", time:"07:00–08:00", title:"Text & Image Processing", meta:"On-site", kind:"class", mode:"onsite" },
+    { day:"Wed", time:"08:00–09:00", title:"Text & Image Processing", meta:"On-site", kind:"class", mode:"onsite" },
+
+    { day:"Thu", time:"07:00–08:00", title:"Artificial Intelligence", meta:"On-site", kind:"class", mode:"onsite" },
+    { day:"Thu", time:"08:00–09:00", title:"Artificial Intelligence", meta:"On-site", kind:"class", mode:"onsite" },
+
+    { day:"Tue", time:"17:30–18:00", title:"Microprocessors", meta:"Hybrid", kind:"class", mode:"hybrid" },
+    { day:"Tue", time:"18:00–19:00", title:"Microprocessors", meta:"Hybrid", kind:"class", mode:"hybrid" },
+    { day:"Tue", time:"19:00–20:00", title:"Networks", meta:"Hybrid", kind:"class", mode:"hybrid" },
+
+    { day:"Thu", time:"17:30–18:00", title:"Microprocessors", meta:"Hybrid", kind:"class", mode:"hybrid" },
+    { day:"Thu", time:"18:00–19:00", title:"Microprocessors", meta:"Hybrid", kind:"class", mode:"hybrid" },
+    { day:"Thu", time:"19:00–20:00", title:"Networks", meta:"Hybrid", kind:"class", mode:"hybrid" },
+
+    { day:"Mon", time:"19:00–20:00", title:"Networks", meta:"Hybrid", kind:"class", mode:"hybrid" },
+
+    { day:"Wed", time:"19:00–20:00", title:"Networks Lab", meta:"On-site", kind:"lab", mode:"onsite" },
+    { day:"Fri", time:"09:00–10:00", title:"Microprocessors Lab", meta:"On-site", kind:"lab", mode:"onsite" },
+    { day:"Fri", time:"10:00–11:00", title:"Microprocessors Lab", meta:"On-site", kind:"lab", mode:"onsite" },
+
+    { day:"Sat", time:"08:00–09:00", title:"Resources & Needs of Mexico", meta:"Class", kind:"class", mode:"onsite" },
+    { day:"Sat", time:"09:00–10:00", title:"Resources & Needs of Mexico", meta:"Class", kind:"class", mode:"onsite" },
+    { day:"Sat", time:"10:00–11:00", title:"Resources & Needs of Mexico", meta:"Class", kind:"class", mode:"onsite" },
+    { day:"Sat", time:"11:00–12:00", title:"Resources & Needs of Mexico", meta:"Class", kind:"class", mode:"onsite" },
+  ];
+
+  const key = (d,t)=> `${d}__${t}`;
+  const map = new Map(EVENTS.map(e => [key(e.day,e.time), e]));
+
+  function cellClass(ev){
+    const base = ev.kind === "lab" ? "cell lab" : "cell class";
+    const mode = ev.mode === "hybrid" ? " hybrid" : " onsite";
+    return base + mode;
+  }
+
+  function renderSchedule(){
+    const body = document.getElementById("scheduleBody");
+    body.innerHTML = "";
+
+    for (const time of TIMES){
+      const tr = document.createElement("tr");
+
+      const tdTime = document.createElement("td");
+      tdTime.className = "time";
+      tdTime.textContent = time;
+      tr.appendChild(tdTime);
+
+      for (const day of DAYS){
+        const td = document.createElement("td");
+        const ev = map.get(key(day,time));
+
+        if (ev){
+          td.className = cellClass(ev);
+          td.innerHTML = `<div class="event-title">${ev.title}</div><div class="event-meta">${ev.meta}</div>`;
+        } else {
+          td.className = "cell work";
+          td.innerHTML = `<div class="event-title">Work</div><div class="event-meta">Free slot</div>`;
+        }
+
+        tr.appendChild(td);
+      }
+
+      body.appendChild(tr);
+    }
+  }
+
+  renderSchedule();
 </script>
-
 </body>
 </html>
