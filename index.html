@@ -712,6 +712,48 @@
     font-size: 20px;
     opacity: .95;
   }
+
+  /* Download Button Animation */
+  .btn {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255,255,255,.2);
+    transform: translate(-50%, -50%);
+    transition: width .6s, height .6s;
+  }
+
+  .btn:active::before {
+    width: 300px;
+    height: 300px;
+  }
+
+  .btn.loading {
+    animation: downloadPulse .8s ease-in-out infinite;
+  }
+
+  @keyframes downloadPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+
+  .btn.loading .ico {
+    animation: downloadBounce .8s ease-in-out infinite;
+  }
+
+  @keyframes downloadBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+  }
 </style>
 </head>
 
@@ -777,9 +819,9 @@
               Open CV
             </button>
 
-            <a class="btn" id="downloadCvBtn" href="#" target="_blank" rel="noopener" download>
+            <a class="btn" id="downloadCvBtn" href="#" onclick="generateCVPDF(event)">
               <svg class="ico" viewBox="0 0 24 24" fill="none"><path d="M12 3v10m0 0l4-4m-4 4l-4-4M5 21h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Download CV
+              <span id="downloadText">Download CV (Harvard Format)</span>
             </a>
 
             <a class="btn ghost" href="https://github.com/Amyv19" target="_blank" rel="noopener">
@@ -1447,6 +1489,223 @@
   }
 
   renderCvCertifications();
+
+  // =============================
+  // PDF Generation (Harvard Format CV)
+  // =============================
+  async function generateCVPDF(e) {
+    if (e) e.preventDefault();
+    const btn = document.getElementById("downloadCvBtn");
+    const text = document.getElementById("downloadText");
+    
+    // Animate button
+    btn.style.pointerEvents = "none";
+    text.textContent = "Generating...";
+    btn.classList.add("loading");
+    
+    // Harvard Format CV HTML
+    const cvHTML = `
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+        <meta charset="UTF-8">
+        <title>Amy Valentina Veraza García - CV</title>
+        <style>
+          * { margin: 0; padding: 0; box-sizing: border-box; }
+          body { 
+            font-family: 'Times New Roman', Times, serif; 
+            line-height: 1.5;
+            color: #000;
+            padding: 40px;
+            max-width: 8.5in;
+            margin: 0 auto;
+          }
+          h1 { font-size: 18pt; text-align: center; font-weight: bold; margin-bottom: 2pt; }
+          .contact { text-align: center; font-size: 10pt; margin-bottom: 12pt; }
+          h2 { 
+            font-size: 12pt; 
+            font-weight: bold; 
+            margin-top: 12pt; 
+            margin-bottom: 6pt;
+            padding-bottom: 2pt;
+            border-bottom: 1px solid #000;
+          }
+          .entry { margin-bottom: 8pt; }
+          .entry-head { display: flex; justify-content: space-between; }
+          .entry-title { font-weight: bold; }
+          .entry-date { font-style: italic; }
+          .entry-meta { font-style: italic; color: #333; margin-top: 2pt; }
+          .entry-bullets { margin-left: 20pt; margin-top: 4pt; }
+          .entry-bullets li { margin: 2pt 0; }
+          .two-col { display: flex; gap: 20pt; margin-top: 6pt; }
+          .col { flex: 1; }
+          .col p { margin: 2pt 0; font-size: 10pt; }
+        </style>
+      </head>
+      <body>
+        <h1>Amy Valentina Veraza García</h1>
+        <div class="contact">
+          Computer Engineering (UNAM) • Junior Developer<br>
+          Mexico City • averaza@comunidad.unam.mx • +52 (PHONE)<br>
+          GitHub: github.com/Amyv19
+        </div>
+
+        <h2>Professional Summary</h2>
+        <p style="font-size: 10pt; margin-bottom: 6pt;">
+          Junior backend-focused developer with professional experience building APIs, designing databases, and implementing web systems. 
+          Strong expertise in PHP (Laravel, Symfony), C#, JavaScript/TypeScript, and PostgreSQL. Proven ability to deliver features 
+          with clean architecture, comprehensive validation, and ownership mindset. Currently pursuing Computer Engineering degree at UNAM.
+        </p>
+
+        <h2>Professional Experience</h2>
+        
+        <div class="entry">
+          <div class="entry-head">
+            <span class="entry-title">Junior Developer</span>
+            <span class="entry-date">Feb 2026 – Present</span>
+          </div>
+          <div class="entry-meta">3Demak • Full-time • Remote</div>
+          <ul class="entry-bullets">
+            <li>Web development support and feature implementation (backend/frontend as needed)</li>
+            <li>Collaborated with team to deliver updates and fixes</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <div class="entry-head">
+            <span class="entry-title">Junior Developer</span>
+            <span class="entry-date">Feb 2026 – Present</span>
+          </div>
+          <div class="entry-meta">Vincourt y Cia S.A. de C.V.</div>
+          <ul class="entry-bullets">
+            <li>Development tasks for internal/assigned projects (backend and frontend)</li>
+            <li>Delivered changes under deadlines with version control</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <div class="entry-head">
+            <span class="entry-title">Junior Software Developer</span>
+            <span class="entry-date">Dec 2024 – Jan 2026</span>
+          </div>
+          <div class="entry-meta">CTSolutions • Full-time • Mexico City (Hybrid)</div>
+          <ul class="entry-bullets">
+            <li>Backend development with PHP (Laravel, Symfony) and .NET (C#)</li>
+            <li>Implemented APIs, business logic, controllers/routes, validation, and database design</li>
+            <li>Frontend work with HTML/CSS/JavaScript, AJAX, jQuery; support in React</li>
+            <li>Worked with SQL Server and PostgreSQL; Jira tickets; Scrum workflow</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <div class="entry-head">
+            <span class="entry-title">Full Stack Developer Intern</span>
+            <span class="entry-date">Aug 2024 – Jan 2025</span>
+          </div>
+          <div class="entry-meta">AK Agencia • Part-time • Mexico City</div>
+          <ul class="entry-bullets">
+            <li>Frontend and backend support with PHP (Laravel)</li>
+            <li>WordPress administration and feature implementation</li>
+            <li>Automation support with Python and SQL queries</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <div class="entry-head">
+            <span class="entry-title">Support Engineer / Web Support</span>
+            <span class="entry-date">Apr 2024 – Sep 2024</span>
+          </div>
+          <div class="entry-meta">GCH Tecnología • Part-time • Mexico City</div>
+          <ul class="entry-bullets">
+            <li>On-site and remote support; preventive and corrective maintenance</li>
+            <li>WordPress administration and database support</li>
+            <li>Documentation and Linux/Windows support</li>
+          </ul>
+        </div>
+
+        <h2>Education</h2>
+        <div class="entry">
+          <div class="entry-head">
+            <span class="entry-title">Bachelor of Computer Engineering</span>
+            <span class="entry-date">In Progress</span>
+          </div>
+          <div class="entry-meta">National Autonomous University of Mexico (UNAM)</div>
+        </div>
+
+        <h2>Core Competencies</h2>
+        <div class="two-col">
+          <div class="col">
+            <p><b>Programming Languages:</b> PHP, C#, JavaScript, TypeScript, Python, SQL</p>
+            <p><b>Backend & Databases:</b> Laravel, Symfony, .NET, Node.js, PostgreSQL, SQL Server</p>
+          </div>
+          <div class="col">
+            <p><b>Frontend:</b> HTML5, CSS3, JavaScript, jQuery, React, AJAX</p>
+            <p><b>Tools & Methods:</b> Git, Docker, Jira, Postman, Scrum, Linux</p>
+          </div>
+        </div>
+
+        <h2>Certifications</h2>
+        <ul style="margin-left: 20pt; font-size: 10pt;">
+          <li>InAgent Professional Certification</li>
+          <li>InSpeech Professional Certification</li>
+          <li>Scrum Foundation Professional Certificate (SFPC)</li>
+          <li>English B2 Level</li>
+          <li>Work Credentials & Professional References</li>
+        </ul>
+
+        <h2>Languages</h2>
+        <p style="font-size: 10pt;">Spanish (Native) • English (B2)</p>
+
+        <p style="margin-top: 20pt; font-size: 9pt; border-top: 1px solid #ccc; padding-top: 10pt; text-align: center;">
+          Generated on ${new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+        </p>
+      </body>
+      </html>
+    `;
+
+    // Create a temporary element
+    const element = document.createElement('div');
+    element.innerHTML = cvHTML;
+
+    try {
+      // Load html2pdf library dynamically
+      const script = document.createElement('script');
+      script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
+      
+      script.onload = () => {
+        const opt = {
+          margin: 0,
+          filename: 'CV_Amy_Valentina_Harvard.pdf',
+          image: { type: 'jpeg', quality: 0.98 },
+          html2canvas: { scale: 2 },
+          jsPDF: { format: 'letter', orientation: 'portrait' }
+        };
+
+        const docElement = document.createElement('div');
+        docElement.innerHTML = cvHTML;
+        document.body.appendChild(docElement);
+        
+        html2pdf().set(opt).from(docElement).save().then(() => {
+          document.body.removeChild(docElement);
+          // Reset button
+          btn.style.pointerEvents = "auto";
+          text.textContent = "✓ Download CV (Harvard Format)";
+          btn.classList.remove("loading");
+          
+          setTimeout(() => {
+            text.textContent = "Download CV (Harvard Format)";
+          }, 3000);
+        });
+      };
+      
+      document.head.appendChild(script);
+    } catch (err) {
+      console.error('PDF generation failed:', err);
+      text.textContent = "Download CV (Harvard Format)";
+      btn.style.pointerEvents = "auto";
+      btn.classList.remove("loading");
+    }
+  }
 
 
   // =============================
