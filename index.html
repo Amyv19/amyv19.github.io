@@ -796,6 +796,8 @@
           <h2>Backend-focused Junior Developer</h2>
           <p class="muted">
             I build reliable APIs and web systems with strong attention to validation, data integrity, and clean architecture.
+            Specialized in RESTful APIs, database design (PostgreSQL, SQL Server), TypeScript, and server infrastructure.
+            Experienced in cybersecurity basics: VPN configuration, server hardening, and secure authentication.
             Interested in backend engineering, automation, and scalable applications.
           </p>
 
@@ -805,12 +807,17 @@
           </div>
 
           <div class="badges">
-            <!-- Keep your src paths, but add data-logo so the fallback works automatically -->
             <div class="chip"><img class="logo" data-logo="laravel" src="assets/logos/laravel.svg" alt="Laravel">Laravel</div>
             <div class="chip"><img class="logo" data-logo="nodejs" src="assets/logos/nodejs.svg" alt="Node.js">Node.js</div>
             <div class="chip"><img class="logo" data-logo="postgresql" src="assets/logos/postgresql.svg" alt="PostgreSQL">PostgreSQL</div>
+            <div class="chip">SQL Server</div>
+            <div class="chip">TypeScript</div>
+            <div class="chip">REST APIs</div>
             <div class="chip"><img class="logo" data-logo="docker" src="assets/logos/docker.svg" alt="Docker">Docker</div>
             <div class="chip"><img class="logo" data-logo="git" src="assets/logos/git.svg" alt="Git">Git</div>
+            <div class="chip">Cybersecurity</div>
+            <div class="chip">VPN</div>
+            <div class="chip">Servers</div>
           </div>
 
           <div class="btns">
@@ -837,16 +844,25 @@
       <div class="kpis">
         <div class="kpi">
           <p class="big">Backend / Full Stack</p>
-          <p class="small">Laravel • .NET • PostgreSQL • Spring Boot • Node.js</p>
+          <p class="small">Laravel • .NET • PostgreSQL • SQL Server • Node.js • TypeScript</p>
         </div>
         <div class="kpi">
-          <p class="big">Hackathons</p>
-          <p class="small">International Winner • Rapid prototyping & delivery</p>
+          <p class="big">Infrastructure & Security</p>
+          <p class="small">REST APIs • VPN Configuration • Server Administration • Cybersecurity</p>
         </div>
         <div class="kpi">
-          <p class="big">Languages</p>
-          <p class="small">Spanish (Native) • English (B2)</p>
+          <p class="big">Languages & Training</p>
+          <p class="small">Spanish (Native) • English (B2) • Technical Support specialist</p>
         </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- TECHNICAL TRAINING SECTION -->
+      <div class="documents-section">
+        <h3 style="margin-top:0;">🎓 Technical Training</h3>
+        <p class="muted">Technician in Systems Maintenance & Microcomputers</p>
+        <div class="gallery-grid" id="technicalTrainingGrid" style="grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));"></div>
       </div>
 
       <div class="divider"></div>
@@ -1331,10 +1347,14 @@
     { name: "Platform Documentation", file: "Plata documentacion.pdf", icon: "📕" },
   ];
 
+  // Technical Training Images
+  const TECHNICAL_TRAINING = [
+    { name: "carrera.png", display: "Technician in Systems Maintenance" },
+  ];
+
   // Photo Gallery
   const GALLERY_IMAGES = [
     { name: "profile.jpg", display: "Profile Photo" },
-    { name: "carrera.png", display: "Technical Career" },
     { name: "php.png", display: "PHP Certification" },
     { name: "img1.jpeg", display: "Gallery 1" },
     { name: "img2.jpeg", display: "Gallery 2" },
@@ -1461,6 +1481,22 @@
   }
 
   renderDocuments();
+  
+  function renderTechnicalTraining() {
+    const container = document.getElementById("technicalTrainingGrid");
+    if (!container) return;
+
+    container.innerHTML = TECHNICAL_TRAINING.map((img, idx) => `
+      <div class="gallery-item" onclick="openLightbox('assets/img/${img.name}', '${img.display}')">
+        <img src="assets/img/${img.name}" alt="${img.display}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 75%22%3E%3Crect fill=%22%230a1a3a%22 width=%22100%22 height=%2275%22/%3E%3Ctext x=%2250%22 y=%2240%22 text-anchor=%22middle%22 fill=%22%23b8c4ff%22 font-size=%2214%22%3EImage Error%3C/text%3E%3C/svg%3E'">
+        <div class="gallery-overlay">
+          <div class="gallery-icon">🔍</div>
+        </div>
+      </div>
+    `).join("");
+  }
+
+  renderTechnicalTraining();
   renderGallery();
   setupCvDownload();
 
@@ -1554,8 +1590,9 @@
         <h2>Professional Summary</h2>
         <p style="font-size: 10pt; margin-bottom: 6pt;">
           Junior backend-focused developer with professional experience building APIs, designing databases, and implementing web systems. 
-          Strong expertise in PHP (Laravel, Symfony), C#, JavaScript/TypeScript, and PostgreSQL. Proven ability to deliver features 
-          with clean architecture, comprehensive validation, and ownership mindset. Currently pursuing Computer Engineering degree at UNAM.
+          Strong expertise in PHP (Laravel, Symfony), C#, JavaScript/TypeScript, PostgreSQL, and SQL Server. Experienced in REST API development.
+          Trained as Technician in Systems Maintenance & Microcomputers with knowledge of cybersecurity fundamentals, VPN configuration, and server administration.
+          Proven ability to deliver features with clean architecture, comprehensive validation, and ownership mindset. Currently pursuing Computer Engineering degree at UNAM.
         </p>
 
         <h2>Professional Experience</h2>
@@ -1637,11 +1674,13 @@
         <div class="two-col">
           <div class="col">
             <p><b>Programming Languages:</b> PHP, C#, JavaScript, TypeScript, Python, SQL</p>
-            <p><b>Backend & Databases:</b> Laravel, Symfony, .NET, Node.js, PostgreSQL, SQL Server</p>
+            <p><b>Backend & Databases:</b> Laravel, Symfony, .NET, Node.js, PostgreSQL, SQL Server, REST APIs</p>
+            <p><b>Infrastructure & Security:</b> Server Administration, VPN Configuration, Cybersecurity Basics, Docker</p>
           </div>
           <div class="col">
             <p><b>Frontend:</b> HTML5, CSS3, JavaScript, jQuery, React, AJAX</p>
-            <p><b>Tools & Methods:</b> Git, Docker, Jira, Postman, Scrum, Linux</p>
+            <p><b>Tools & Methods:</b> Git, Jira, Postman, Scrum, Linux, System Maintenance</p>
+            <p><b>Technical Training:</b> Technician in Systems Maintenance & Microcomputers</p>
           </div>
         </div>
 
