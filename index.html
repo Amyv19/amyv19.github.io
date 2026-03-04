@@ -1914,7 +1914,7 @@
 
 
   // =============================
-  // Schedule generation: everything free = Work
+  // ✅ Schedule (YOUR CURRENT CLASSES)
   // =============================
   const TIMES = [
     "07:00–08:00","08:00–09:00","09:00–10:00","10:00–11:00","11:00–12:00","12:00–13:00",
@@ -1922,37 +1922,46 @@
   ];
   const DAYS = ["Mon","Tue","Wed","Thu","Fri", "Sat"];
 
+  // Based on what you shared:
+  // - Mon/Wed: Electricity & Magnetism 13:00–15:00
+  // - Tue/Thu: On-site class 07:00–08:30 (represented as 07–08 and 08–09)
+  // - Sat: Resources & Needs of Mexico 08:00–12:00
+  // - Extra classes from your previous schedule (Microprocessors/Networks) kept (hybrid evenings)
   const EVENTS = [
-    { day:"Mon", time:"07:00–08:00", title:"Text & Image Processing", meta:"On-site", kind:"class", mode:"onsite" },
-    { day:"Mon", time:"08:00–09:00", title:"Text & Image Processing", meta:"On-site", kind:"class", mode:"onsite" },
+    // Tue/Thu early class 07:00-08:30
+    { day:"Tue", time:"07:00–08:00", title:"On-site Class", meta:"On-site", kind:"class", mode:"onsite" },
+    { day:"Tue", time:"08:00–09:00", title:"On-site Class", meta:"On-site (until 08:30)", kind:"class", mode:"onsite" },
 
-    { day:"Tue", time:"07:00–08:00", title:"Artificial Intelligence", meta:"On-site", kind:"class", mode:"onsite" },
-    { day:"Tue", time:"08:00–09:00", title:"Artificial Intelligence", meta:"On-site", kind:"class", mode:"onsite" },
+    { day:"Thu", time:"07:00–08:00", title:"On-site Class", meta:"On-site", kind:"class", mode:"onsite" },
+    { day:"Thu", time:"08:00–09:00", title:"On-site Class", meta:"On-site (until 08:30)", kind:"class", mode:"onsite" },
 
-    { day:"Wed", time:"07:00–08:00", title:"Text & Image Processing", meta:"On-site", kind:"class", mode:"onsite" },
-    { day:"Wed", time:"08:00–09:00", title:"Text & Image Processing", meta:"On-site", kind:"class", mode:"onsite" },
+    // Mon/Wed Electricity & Magnetism 13:00–15:00
+    { day:"Mon", time:"13:00–14:00", title:"Electricity & Magnetism", meta:"On-site", kind:"class", mode:"onsite" },
+    { day:"Mon", time:"14:00–15:00", title:"Electricity & Magnetism", meta:"On-site", kind:"class", mode:"onsite" },
 
-    { day:"Thu", time:"07:00–08:00", title:"Artificial Intelligence", meta:"On-site", kind:"class", mode:"onsite" },
-    { day:"Thu", time:"08:00–09:00", title:"Artificial Intelligence", meta:"On-site", kind:"class", mode:"onsite" },
+    { day:"Wed", time:"13:00–14:00", title:"Electricity & Magnetism", meta:"On-site", kind:"class", mode:"onsite" },
+    { day:"Wed", time:"14:00–15:00", title:"Electricity & Magnetism", meta:"On-site", kind:"class", mode:"onsite" },
 
+    // Sat Resources & Needs of Mexico 08:00–12:00
+    { day:"Sat", time:"08:00–09:00", title:"Resources & Needs of Mexico", meta:"Class (On-site)", kind:"class", mode:"onsite" },
+    { day:"Sat", time:"09:00–10:00", title:"Resources & Needs of Mexico", meta:"Class (On-site)", kind:"class", mode:"onsite" },
+    { day:"Sat", time:"10:00–11:00", title:"Resources & Needs of Mexico", meta:"Class (On-site)", kind:"class", mode:"onsite" },
+    { day:"Sat", time:"11:00–12:00", title:"Resources & Needs of Mexico", meta:"Class (On-site)", kind:"class", mode:"onsite" },
+
+    // Keep your evening hybrid blocks you had before (optional but you included them)
     { day:"Tue", time:"17:30–18:00", title:"Microprocessors", meta:"Hybrid", kind:"class", mode:"hybrid" },
     { day:"Tue", time:"18:00–19:00", title:"Microprocessors", meta:"Hybrid", kind:"class", mode:"hybrid" },
-    { day:"Tue", time:"19:00–20:00", title:"Networks", meta:"Hybrid", kind:"class", mode:"hybrid" },
+    { day:"Tue", time:"19:00–20:00", title:"Secure Data Networks", meta:"Hybrid", kind:"class", mode:"hybrid" },
 
     { day:"Thu", time:"17:30–18:00", title:"Microprocessors", meta:"Hybrid", kind:"class", mode:"hybrid" },
     { day:"Thu", time:"18:00–19:00", title:"Microprocessors", meta:"Hybrid", kind:"class", mode:"hybrid" },
-    { day:"Thu", time:"19:00–20:00", title:"Networks", meta:"Hybrid", kind:"class", mode:"hybrid" },
+    { day:"Thu", time:"19:00–20:00", title:"Secure Data Networks", meta:"Hybrid", kind:"class", mode:"hybrid" },
 
-    { day:"Mon", time:"19:00–20:00", title:"Networks", meta:"Hybrid", kind:"class", mode:"hybrid" },
+    { day:"Mon", time:"19:00–20:00", title:"Secure Data Networks", meta:"Hybrid", kind:"class", mode:"hybrid" },
 
-    { day:"Wed", time:"19:00–20:00", title:"Networks Lab", meta:"On-site", kind:"lab", mode:"onsite" },
+    { day:"Wed", time:"19:00–20:00", title:"Secure Data Networks Lab", meta:"On-site", kind:"lab", mode:"onsite" },
     { day:"Fri", time:"09:00–10:00", title:"Microprocessors Lab", meta:"On-site", kind:"lab", mode:"onsite" },
     { day:"Fri", time:"10:00–11:00", title:"Microprocessors Lab", meta:"On-site", kind:"lab", mode:"onsite" },
-
-    { day:"Sat", time:"08:00–09:00", title:"Resources & Needs of Mexico", meta:"Class", kind:"class", mode:"onsite" },
-    { day:"Sat", time:"09:00–10:00", title:"Resources & Needs of Mexico", meta:"Class", kind:"class", mode:"onsite" },
-    { day:"Sat", time:"10:00–11:00", title:"Resources & Needs of Mexico", meta:"Class", kind:"class", mode:"onsite" },
-    { day:"Sat", time:"11:00–12:00", title:"Resources & Needs of Mexico", meta:"Class", kind:"class", mode:"onsite" },
   ];
 
   const key = (d,t)=> `${d}__${t}`;
