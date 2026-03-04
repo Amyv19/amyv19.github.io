@@ -197,14 +197,12 @@
 
   .muted{ color: rgba(234,240,255,.72); font-size: 13px; line-height:1.6; }
 
-  /* Professional separators */
   .divider{
     height:1px;
     background: rgba(255,255,255,.10);
     margin: 14px 0;
   }
 
-  /* Hero */
   .hero{
     display:flex;
     gap: 14px;
@@ -222,11 +220,8 @@
     font-weight: 950;
     letter-spacing:.2px;
   }
-  .hero p{
-    margin:8px 0 0;
-  }
+  .hero p{ margin:8px 0 0; }
 
-  /* Hero image */
   .hero-image{
     margin-top: 18px;
     border-radius: 18px;
@@ -259,13 +254,8 @@
     border: 1px solid rgba(255,255,255,.10);
     background: rgba(255,255,255,.06);
   }
-  .logo{
-    width:16px;
-    height:16px;
-    object-fit:contain;
-  }
+  .logo{ width:16px; height:16px; object-fit:contain; }
 
-  /* Buttons */
   .btns{ display:flex; flex-wrap:wrap; gap:10px; margin-top: 12px; }
   .btn{
     display:inline-flex;
@@ -282,6 +272,8 @@
     cursor:pointer;
     transition: transform .14s ease, background .2s ease, border-color .2s ease;
     user-select:none;
+    position: relative;
+    overflow: hidden;
   }
   .btn:hover{
     transform: translateY(-2px);
@@ -292,16 +284,13 @@
     background: linear-gradient(135deg, rgba(108,124,255,.35), rgba(34,211,238,.20));
     border-color: rgba(108,124,255,.55);
   }
-  .btn.ghost{
-    background: rgba(255,255,255,.04);
-  }
+  .btn.ghost{ background: rgba(255,255,255,.04); }
 
   .ico{
     width:18px;height:18px; display:inline-block; flex:0 0 auto;
     filter: drop-shadow(0 8px 16px rgba(0,0,0,.25));
   }
 
-  /* KPI */
   .kpis{
     display:grid;
     grid-template-columns: repeat(3, 1fr);
@@ -316,11 +305,7 @@
     transition: transform .14s ease;
   }
   .kpi:hover{ transform: translateY(-2px); }
-  .kpi .big{
-    font-weight: 950;
-    font-size: 13.5px;
-    margin:0;
-  }
+  .kpi .big{ font-weight: 950; font-size: 13.5px; margin:0; }
   .kpi .small{
     margin:6px 0 0;
     font-size: 12px;
@@ -332,7 +317,6 @@
     .kpis{ grid-template-columns:1fr; }
   }
 
-  /* Views */
   .view{ display:none; }
   .view.active{
     display:block;
@@ -343,7 +327,6 @@
     to{ opacity:1; transform: translateY(0) scale(1); }
   }
 
-  /* Info blocks */
   .two{
     display:grid;
     grid-template-columns: 1fr 1fr;
@@ -367,15 +350,10 @@
   }
   .mini p{ margin:0; font-size: 13px; color: rgba(234,240,255,.76); line-height:1.6; }
 
-  /* Links */
   a{ color: rgba(234,240,255,.92); }
   a:hover{ color: white; }
 
-  /* Sidebar */
-  .side{
-    position: sticky;
-    top: 88px;
-  }
+  .side{ position: sticky; top: 88px; }
   .side h2{ margin:0 0 10px; }
   .menu{
     display:flex;
@@ -486,12 +464,7 @@
     color: rgba(234,240,255,.72);
   }
 
-  .exp{
-    margin-top: 10px;
-    display: grid;
-    gap: 12px;
-  }
-
+  .exp{ margin-top: 10px; display: grid; gap: 12px; }
   .exp-item{
     background: rgba(255,255,255,.06);
     border: 1px solid rgba(255,255,255,.10);
@@ -507,24 +480,9 @@
     flex-wrap: wrap;
   }
 
-  .exp-role{
-    font-weight: 950;
-    font-size: 13.5px;
-  }
-
-  .exp-date{
-    font-weight: 900;
-    font-size: 12px;
-    color: rgba(234,240,255,.70);
-  }
-
-  .exp-sub{
-    margin-top: 6px;
-    font-size: 12.5px;
-    color: rgba(234,240,255,.75);
-    font-weight: 800;
-  }
-
+  .exp-role{ font-weight: 950; font-size: 13.5px; }
+  .exp-date{ font-weight: 900; font-size: 12px; color: rgba(234,240,255,.70); }
+  .exp-sub{ margin-top: 6px; font-size: 12.5px; color: rgba(234,240,255,.75); font-weight: 800; }
   .exp-bullets{
     margin: 10px 0 0;
     padding-left: 18px;
@@ -532,10 +490,8 @@
     font-size: 13px;
     line-height: 1.6;
   }
-
   .exp-bullets li{ margin: 6px 0; }
 
-  /* Company logo in experience (better with theme) */
   .company-logo{
     width:26px;
     height:26px;
@@ -546,7 +502,6 @@
     padding:4px;
   }
 
-  /* Footer */
   footer{
     max-width:1120px;
     margin: 0 auto;
@@ -555,288 +510,32 @@
     font-size: 12px;
   }
 
-  /* Small utilities */
   .nowrap{ white-space:nowrap; }
 
-  /* Documents Section */
-  .documents-section h3,
-  .gallery-section h3 {
-    font-size: 15px;
-    letter-spacing: .2px;
-    color: rgba(234,240,255,.92);
-    margin-bottom: 8px;
-  }
-
-  .docs-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 12px;
-    margin-top: 12px;
-  }
-
-  .doc-item {
-    background: rgba(255,255,255,.06);
-    border: 1px solid rgba(255,255,255,.10);
-    border-radius: 14px;
-    padding: 12px;
-    text-align: center;
-    transition: transform .14s ease, box-shadow .14s ease, background .2s ease;
-    text-decoration: none;
-    color: rgba(234,240,255,.92);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .doc-item:hover {
-    transform: translateY(-3px);
-    background: rgba(255,255,255,.10);
-    border-color: rgba(108,124,255,.55);
-    box-shadow: 0 12px 24px rgba(108,124,255,.20);
-  }
-
-  .doc-icon {
-    font-size: 28px;
-    opacity: .9;
-  }
-
-  .doc-name {
-    font-weight: 900;
-    font-size: 12px;
-    word-break: break-word;
-    line-height: 1.3;
-    color: rgba(234,240,255,.88);
-  }
-
-  .doc-size {
-    font-size: 10px;
-    color: rgba(234,240,255,.65);
-    margin-top: 4px;
-  }
-
-  /* Gallery Grid */
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 12px;
-    margin-top: 12px;
-  }
-
-  .gallery-item {
-    position: relative;
-    border-radius: 14px;
-    overflow: hidden;
-    border: 1px solid rgba(255,255,255,.10);
-    background: rgba(255,255,255,.06);
-    aspect-ratio: 4 / 3;
-    cursor: pointer;
-    transition: transform .14s ease, box-shadow .14s ease;
-  }
-
-  .gallery-item:hover {
-    transform: scale(1.04);
-    box-shadow: 0 12px 28px rgba(108,124,255,.25);
-  }
-
-  .gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform .3s ease;
-  }
-
-  .gallery-item:hover img {
-    transform: scale(1.05);
-  }
-
-  .gallery-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,.4);
-    opacity: 0;
-    transition: opacity .2s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    backdrop-filter: blur(2px);
-  }
-
-  .gallery-item:hover .gallery-overlay {
-    opacity: 1;
-  }
-
-  .gallery-icon {
-    font-size: 32px;
-    color: rgba(255,255,255,.9);
-  }
-
-  @media (max-width: 720px) {
-    .docs-grid {
-      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    }
-    .gallery-grid {
-      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    }
-  }
-
-  /* Certifications Grid */
-  .cert-item {
-    background: linear-gradient(135deg, rgba(108,124,255,.15), rgba(34,211,238,.10));
-    border: 1px solid rgba(108,124,255,.35);
-    border-radius: 12px;
-    padding: 10px 8px;
-    text-align: center;
-    transition: transform .14s ease, box-shadow .14s ease;
-    text-decoration: none;
-    color: rgba(234,240,255,.92);
-    cursor: pointer;
-    font-size: 11px;
-    font-weight: 850;
-    line-height: 1.2;
-    word-break: break-word;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .cert-item:hover {
-    transform: translateY(-2px);
-    border-color: rgba(108,124,255,.55);
-    box-shadow: 0 8px 16px rgba(108,124,255,.20);
-  }
-
-  .cert-icon {
-    font-size: 20px;
-    opacity: .95;
-  }
-
-  /* Projects Grid */
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 14px;
-    margin-top: 12px;
-  }
-
-  .project-card {
-    background: linear-gradient(135deg, rgba(34,211,238,.12), rgba(108,124,255,.10));
-    border: 1px solid rgba(34,211,238,.35);
-    border-radius: 16px;
-    padding: 16px;
-    transition: transform .14s ease, box-shadow .14s ease, border-color .2s ease;
-    overflow: hidden;
-    position: relative;
-  }
-
-  .project-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, rgba(34,211,238,.6), rgba(108,124,255,.6));
-  }
-
-  .project-card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(34,211,238,.55);
-    box-shadow: 0 12px 28px rgba(34,211,238,.20);
-  }
-
-  .project-title {
-    font-weight: 950;
-    font-size: 13.5px;
-    margin: 0 0 6px;
-    color: rgba(234,240,255,.95);
-  }
-
-  .project-award {
-    display: inline-block;
-    background: linear-gradient(135deg, rgba(34,211,238,.25), rgba(34,197,94,.15));
-    border: 1px solid rgba(34,211,238,.45);
-    color: rgba(34,211,238,.95);
-    font-size: 11px;
-    font-weight: 900;
-    padding: 4px 8px;
-    border-radius: 20px;
-    margin-bottom: 8px;
-  }
-
-  .project-desc {
-    font-size: 12px;
-    line-height: 1.5;
-    color: rgba(234,240,255,.80);
-    margin: 8px 0;
-  }
-
-  .project-tech {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
+  /* Certifications in CV */
+  .cert-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap:10px;
     margin-top: 10px;
   }
-
-  .project-badge {
-    display: inline-block;
-    background: rgba(108,124,255,.15);
-    border: 1px solid rgba(108,124,255,.30);
-    color: rgba(108,124,255,.95);
-    font-size: 10px;
-    font-weight: 800;
-    padding: 3px 6px;
-    border-radius: 10px;
+  .cert{
+    background: linear-gradient(135deg, rgba(108,124,255,.15), rgba(34,211,238,.10));
+    border: 1px solid rgba(108,124,255,.35);
+    border-radius: 14px;
+    padding: 10px;
+    display:flex;
+    align-items:center;
+    gap:10px;
   }
-
-  @media (max-width: 720px) {
-    .projects-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  /* Download Button Animation */
-  .btn {
-    position: relative;
-    overflow: hidden;
-  }
-
-  .btn::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(255,255,255,.2);
-    transform: translate(-50%, -50%);
-    transition: width .6s, height .6s;
-  }
-
-  .btn:active::before {
-    width: 300px;
-    height: 300px;
-  }
-
-  .btn.loading {
-    animation: downloadPulse .8s ease-in-out infinite;
-  }
-
-  @keyframes downloadPulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-  }
-
-  .btn.loading .ico {
-    animation: downloadBounce .8s ease-in-out infinite;
-  }
-
-  @keyframes downloadBounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-4px); }
+  .cert b{ font-size: 12px; }
+  .cert small{ display:block; margin-top:3px; color: rgba(234,240,255,.70); font-weight:800; }
+  .cert .badge{
+    width:34px; height:34px; border-radius: 12px;
+    display:grid; place-items:center;
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.12);
+    font-weight: 950;
   }
 </style>
 </head>
@@ -885,8 +584,7 @@
             Interested in backend engineering, automation, and scalable applications.
           </p>
 
-          <!-- Hero image -->
-          <div class="hero-image" id="heroBox">
+          <div class="hero-image">
             <img id="heroImg" src="assets/img/hero-code.jpg" alt="Backend Developer Workspace">
           </div>
 
@@ -910,10 +608,10 @@
               Open CV
             </button>
 
-            <a class="btn" id="downloadCvBtn" href="#" onclick="generateCVPDF(event)">
-              <svg class="ico" viewBox="0 0 24 24" fill="none"><path d="M12 3v10m0 0l4-4m-4 4l-4-4M5 21h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <span id="downloadText">Download CV (Harvard Format)</span>
-            </a>
+            <button class="btn" data-jump="schedule">
+              <svg class="ico" viewBox="0 0 24 24" fill="none"><path d="M7 4v2m10-2v2M5 8h14M7 12h3m-3 4h5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              View Schedule
+            </button>
 
             <a class="btn ghost" href="https://github.com/Amyv19" target="_blank" rel="noopener">
               <svg class="ico" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.64 2 12.35c0 4.56 2.87 8.43 6.84 9.8.5.1.68-.22.68-.48 0-.24-.01-.87-.01-1.71-2.78.62-3.36-1.38-3.36-1.38-.46-1.2-1.11-1.52-1.11-1.52-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.58 2.36 1.12 2.94.86.09-.67.35-1.12.64-1.38-2.22-.26-4.56-1.15-4.56-5.13 0-1.13.39-2.05 1.03-2.77-.1-.26-.45-1.31.1-2.74 0 0 .85-.28 2.79 1.06.81-.23 1.67-.35 2.53-.35.86 0 1.72.12 2.53.35 1.94-1.34 2.79-1.06 2.79-1.06.55 1.43.2 2.48.1 2.74.64.72 1.03 1.64 1.03 2.77 0 3.99-2.34 4.86-4.57 5.12.36.32.68.95.68 1.92 0 1.39-.01 2.51-.01 2.85 0 .26.18.59.69.48A10.2 10.2 0 0 0 22 12.35C22 6.64 17.52 2 12 2Z" fill="currentColor"/></svg>
@@ -935,53 +633,9 @@
           <p class="small">REST APIs • VPN Configuration • Server Administration • Cybersecurity</p>
         </div>
         <div class="kpi">
-          <p class="big">Languages & Training</p>
-          <p class="small">Spanish (Native) • English (B2) • Technical Support specialist</p>
+          <p class="big">Languages</p>
+          <p class="small">Spanish (Native) • English (B2)</p>
         </div>
-      </div>
-
-      <div class="divider"></div>
-
-      <!-- TECHNICAL TRAINING SECTION -->
-      <div class="documents-section">
-        <h3 style="margin-top:0;">▲ Technical Training</h3>
-        <p class="muted">Technician in Systems Maintenance & Microcomputers</p>
-        <div class="gallery-grid" id="technicalTrainingGrid" style="grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));"></div>
-      </div>
-
-      <div class="divider"></div>
-
-      <!-- FEATURED PROJECTS & ACHIEVEMENTS SECTION -->
-      <div class="documents-section">
-        <h3 style="margin-top:0;">◆ Featured Projects & Awards</h3>
-        <p class="muted">Notable achievements and current projects:</p>
-        <div class="projects-grid" id="projectsGrid"></div>
-      </div>
-
-      <div class="divider"></div>
-
-      <!-- CERTIFICATIONS SECTION -->
-      <div class="documents-section">
-        <h3 style="margin-top:0;">★ Professional Certifications</h3>
-        <p class="muted">Download my certifications and professional credentials:</p>
-        <div class="docs-grid" id="certificationsGrid"></div>
-      </div>
-
-      <div class="divider"></div>
-
-      <!-- COMPLETED PROJECTS SECTION -->
-      <div class="documents-section">
-        <h3 style="margin-top:0;">✓ Completed Work & Documentation</h3>
-        <p class="muted">Projects and documentation I've worked on:</p>
-        <div class="docs-grid" id="workDocsGrid"></div>
-      </div>
-
-      <div class="divider"></div>
-
-      <!-- GALLERY SECTION -->
-      <div class="gallery-section">
-        <h3 style="margin-top:0;">🖼️ Photo Gallery</h3>
-        <div class="gallery-grid" id="galleryGrid"></div>
       </div>
     </div>
 
@@ -990,7 +644,7 @@
       <h2>About</h2>
       <p class="muted">
         I’m a Computer Engineering student at UNAM with professional experience in web development.
-        I enjoy building backend systems, designing databases, and delivering features with clean code and strong validations.
+        I enjoy building backend systems, designing databases, and delivering features with clean code and strong validation.
       </p>
 
       <div class="divider"></div>
@@ -1025,7 +679,12 @@
     <!-- SCHEDULE -->
     <div class="view" id="view-schedule">
       <h2>Weekly Schedule</h2>
-      <p class="muted">All free time slots are marked as <b>Work</b>.</p>
+      <p class="muted">
+        Your current classes are shown. All remaining slots are marked as <b>Work</b>.
+        <br/><span style="color:rgba(234,240,255,.70); font-weight:800;">
+          Also consider your commute routine (drop-off 9:30 AM, pick-up 6:30 PM) when planning work blocks.
+        </span>
+      </p>
 
       <div class="schedule-wrap">
         <div class="legend">
@@ -1061,7 +720,7 @@
         <h3>Summary</h3>
         <p>
           Junior developer with experience in web development and technical support.
-          Strong in backend + frontend with PHP (Laravel/Symfony), .NET (C#), JavaScript, and databases.
+          Strong in backend + frontend with PHP (Laravel/Symfony), .NET (C#), JavaScript/TypeScript, and databases (PostgreSQL, SQL Server).
         </p>
       </div>
 
@@ -1122,8 +781,8 @@
           </div>
           <div class="exp-sub">CTSolutions • Full-time • Mexico City (Hybrid)</div>
           <ul class="exp-bullets">
-            <li>Backend development with PHP (Laravel, Symfony; basic CodeIgniter) and .NET (C#).</li>
-            <li>Implemented APIs, business logic, controllers/routes/validation, and database design.</li>
+            <li>Backend development with PHP (Laravel, Symfony) and .NET (C#).</li>
+            <li>Implemented APIs, business logic, controllers/routes, validation, and database design.</li>
             <li>Frontend work with HTML/CSS/JavaScript, AJAX and jQuery; support in React.</li>
             <li>Worked with SQL Server and PostgreSQL; Jira tickets; Scrum workflow.</li>
           </ul>
@@ -1173,10 +832,13 @@
         </div>
       </div>
 
-      <div class="mini">
-        <h3>★ Professional Certifications</h3>
-        <div id="cvCertificationsGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-top: 12px;"></div>
+      <!-- ✅ Certifications INSIDE CV module (as requested) -->
+      <div class="mini" style="margin-top:12px;">
+        <h3>Certifications</h3>
+        <p class="muted">Click to open (place your PDF files under <b>/docs/</b>). If a file is missing, it will still show in the list.</p>
+        <div class="cert-grid" id="cvCertGrid"></div>
       </div>
+
     </div>
 
   </section>
@@ -1211,10 +873,11 @@
       <h3>Assets Folder</h3>
       <p class="muted" style="margin-top:8px;">
         Place your files here:
-        <br><b>assets/img/foto.jpg</b> (avatar)
+        <br><b>assets/img/profile.jpg</b> (avatar)
         <br><b>assets/img/hero-code.jpg</b> (hero banner)
         <br><b>assets/logos/*.svg</b> (tech logos)
         <br><b>assets/logos/*.png</b> (company logos)
+        <br><b>docs/*.pdf</b> (certifications, manuals, etc.)
       </p>
     </div>
 
@@ -1267,10 +930,7 @@
 
   // =============================
   // Inline SVG Logo System
-  // - If your asset file exists, it will load.
-  // - If it doesn't exist, we auto-replace with the embedded SVG.
   // =============================
-
   function monogram(text, accent){
     return `
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
@@ -1292,26 +952,21 @@
   }
 
   const LogoSVG = {
-    // Tech logos (clean + recognizable style; works small)
     laravel: `
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-        <defs>
-          <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-            <stop stop-color="#ff6b6b"/><stop offset="1" stop-color="#ff3d3d"/>
-          </linearGradient>
-        </defs>
+        <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+          <stop stop-color="#ff6b6b"/><stop offset="1" stop-color="#ff3d3d"/>
+        </linearGradient></defs>
         <path fill="url(#g)" d="M10 22l12-7 12 7v14l-12 7-12-7V22zm24 0l12-7 8 5v14l-12 7-8-5V22z"/>
         <path fill="rgba(255,255,255,.92)" d="M22 22l12 7v14l-12-7V22z"/>
       </svg>
     `.trim(),
-
     nodejs: `
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
         <path fill="#22c55e" d="M32 6l22 13v26L32 58 10 45V19L32 6z"/>
         <path fill="rgba(255,255,255,.92)" d="M25 22h7c6 0 10 3 10 10s-4 10-10 10h-7V22zm7 5h-2v10h2c3 0 5-1 5-5s-2-5-5-5z"/>
       </svg>
     `.trim(),
-
     postgresql: `
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
         <path fill="#60a5fa" d="M32 8c10 0 18 6 18 14 0 6-4 10-9 12v12c0 4-3 8-9 8s-9-4-9-8V34c-5-2-9-6-9-12C14 14 22 8 32 8z"/>
@@ -1320,22 +975,18 @@
         <circle cx="36" cy="24" r="1.6" fill="#0b1220"/>
       </svg>
     `.trim(),
-
     docker: `
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
         <path fill="#22d3ee" d="M14 30h6v6h-6v-6zm8 0h6v6h-6v-6zm8 0h6v6h-6v-6zm8 0h6v6h-6v-6zm-16-8h6v6h-6v-6zm8 0h6v6h-6v-6z"/>
         <path fill="rgba(255,255,255,.86)" d="M12 40c1 9 10 14 22 14 11 0 20-4 24-12 1-2 1-4 1-6-3 0-6-1-8-3-1 2-3 4-6 4H12v3z"/>
       </svg>
     `.trim(),
-
     git: `
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
         <path fill="#f97316" d="M12 32L30 14c1-1 3-1 4 0l18 18c1 1 1 3 0 4L34 54c-1 1-3 1-4 0L12 36c-1-1-1-3 0-4z"/>
         <path fill="rgba(255,255,255,.92)" d="M34 22a4 4 0 0 0-3 6v8.2a4 4 0 1 0 2 0V30a4 4 0 0 0 1-8zm0 3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-4 18a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
       </svg>
     `.trim(),
-
-    // Company/Institution logos (clean monograms; replace later with real PNGs if you have them)
     unam: monogram("UNAM", "#6c7cff"),
     "3demak": monogram("3D", "#22d3ee"),
     vincourt: monogram("VC", "#b8c4ff"),
@@ -1355,20 +1006,13 @@
       const svg = LogoSVG[key];
       if (!svg) return;
 
-      // If src is missing -> inline immediately.
-      if (!img.getAttribute("src")) {
-        img.src = svgToDataUri(svg);
-        return;
-      }
-
-      // If src exists but fails -> fallback to inline.
       img.addEventListener("error", () => {
         img.src = svgToDataUri(svg);
       }, { once: true });
     });
   }
 
-  // Hero banner fallback (in case assets/img/hero-code.jpg is missing)
+  // Hero fallback if hero image is missing
   function applyHeroFallback(){
     const heroImg = document.getElementById("heroImg");
     if (!heroImg) return;
@@ -1420,501 +1064,7 @@
   applyHeroFallback();
 
   // =============================
-  // Dynamic Documents & Gallery Loading
-  // =============================
-
-  // Professional Certifications
-  const CERTIFICATIONS = [
-    { name: "InAgent Certification", file: "certification-Inagent-averaza@ctsolutionsmx.com.pdf" },
-    { name: "InSpeech Certification", file: "certification-Inspeech-averaza@ctsolutionsmx.com.pdf" },
-    { name: "IC InAgent", file: "IC_Inagent_Amy Valentina Veraza García.pdf" },
-    { name: "English B2", file: "ingles.pdf" },
-    { name: "Work Credentials", file: "Constancias_Veraza Garcia Amy Valentina (3).pdf" },
-    { name: "Scrum Foundation", display: "scrum.png" },
-  ];
-
-  // Featured Projects & Awards
-  const PROJECTS = [
-    { 
-      title: "BLU AI - Hurricane Prediction System", 
-      award: "▸ In Deployment",
-      desc: "AI-powered chatbot for hurricane prediction and analysis. Built with React, Llama Meta, and machine learning models.",
-      tags: ["React", "Llama Meta", "AI", "Chatbot", "ML"] 
-    },
-    { 
-      title: "META Winner - International Hackathon", 
-      award: "$2M Prize Pool",
-      desc: "International hackathon winner. Demonstrated innovative problem-solving and full-stack development capabilities.",
-      tags: ["Hackathon", "Winner", "META", "International"] 
-    },
-    { 
-      title: "Construyendo el Futuro Award", 
-      award: "$80,000 MXN",
-      desc: "Prestigious award for innovation and technological development. Recognized for outstanding contribution to future technologies.",
-      tags: ["Award", "Innovation", "Mexico"] 
-    },
-    { 
-      title: "NASA Space Hackathon", 
-      award: "★ Participant",
-      desc: "Participated in NASA space technology hackathon, focusing on innovative solutions for space exploration challenges.",
-      tags: ["NASA", "Space", "Hackathon", "Innovation"] 
-    },
-  ];
-
-  // Completed Work & Documentation (manuals and guides)
-  const WORK_DOCUMENTS = [
-    { name: "Portal Manual", file: "Manual-Portal (1) (1).pdf", icon: "[PDF]" },
-    { name: "Ludoteca Manual", file: "Manual Ludoteca.pdf", icon: "[PDF]" },
-    { name: "Platform Documentation", file: "Plata documentacion.pdf", icon: "[PDF]" },
-  ];
-
-  // Technical Training Images
-  const TECHNICAL_TRAINING = [
-    { name: "carrera.png", display: "Technician in Systems Maintenance" },
-  ];
-
-  // Photo Gallery
-  const GALLERY_IMAGES = [
-    { name: "profile.jpg", display: "Profile Photo" },
-    { name: "php.png", display: "PHP Certification" },
-    { name: "img1.jpeg", display: "Gallery 1" },
-    { name: "img2.jpeg", display: "Gallery 2" },
-    { name: "img3.jpeg", display: "Gallery 3" },
-    { name: "img4.jpeg", display: "Gallery 4" },
-  ];
-
-  function renderDocuments() {
-    // Render certifications
-    const certContainer = document.getElementById("certificationsGrid");
-    if (certContainer) {
-      certContainer.innerHTML = CERTIFICATIONS.map((doc, idx) => {
-        if (doc.file) {
-          return `
-            <a class="doc-item" href="docs/${doc.file}" target="_blank" rel="noopener">
-              <div class="doc-icon">[C]</div>
-              <div class="doc-name">${doc.name}</div>
-              <div class="doc-size">PDF</div>
-            </a>
-          `;
-        } else if (doc.display) {
-          return `
-            <div class="doc-item" onclick="openLightbox('assets/img/${doc.display}', '${doc.name}')" style="cursor: pointer;">
-              <div class="doc-icon">[C]</div>
-              <div class="doc-name">${doc.name}</div>
-              <div class="doc-size">Certificate</div>
-            </div>
-          `;
-        }
-      }).join("");
-    }
-
-    // Render work documents
-    const workContainer = document.getElementById("workDocsGrid");
-    if (workContainer) {
-      workContainer.innerHTML = WORK_DOCUMENTS.map((doc, idx) => `
-        <a class="doc-item" href="docs/${doc.file}" target="_blank" rel="noopener">
-          <div class="doc-icon">${doc.icon || "[D]"}</div>
-          <div class="doc-name">${doc.name}</div>
-          <div class="doc-size">PDF</div>
-        </a>
-      `).join("");
-    }
-
-    // Render projects
-    const projectsContainer = document.getElementById("projectsGrid");
-    if (projectsContainer) {
-      projectsContainer.innerHTML = PROJECTS.map((project, idx) => `
-        <div class="project-card">
-          <div class="project-award">${project.award}</div>
-          <h3 class="project-title">${project.title}</h3>
-          <p class="project-desc">${project.desc}</p>
-          <div class="project-tech">
-            ${project.tags.map(tag => `<span class="project-badge">${tag}</span>`).join("")}
-          </div>
-        </div>
-      `).join("");
-    }
-  }
-
-  function renderGallery() {
-    const container = document.getElementById("galleryGrid");
-    if (!container) return;
-
-    container.innerHTML = GALLERY_IMAGES.map((img, idx) => `
-      <div class="gallery-item" onclick="openLightbox('assets/img/${img.name}', '${img.display}')">
-        <img src="assets/img/${img.name}" alt="${img.display}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 75%22%3E%3Crect fill=%22%230a1a3a%22 width=%22100%22 height=%2275%22/%3E%3Ctext x=%2250%22 y=%2240%22 text-anchor=%22middle%22 fill=%22%23b8c4ff%22 font-size=%2214%22%3EImage Error%3C/text%3E%3C/svg%3E'">
-        <div class="gallery-overlay">
-          <div class="gallery-icon">🔍</div>
-        </div>
-      </div>
-    `).join("");
-  }
-
-  function openLightbox(src, name) {
-    const lightbox = document.createElement("div");
-    lightbox.style.cssText = `
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,.85);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 999;
-      cursor: pointer;
-      backdrop-filter: blur(4px);
-    `;
-
-    const img = document.createElement("img");
-    img.src = src;
-    img.alt = name;
-    img.style.cssText = `
-      max-width: 90%;
-      max-height: 90vh;
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,.10);
-      box-shadow: 0 20px 60px rgba(0,0,0,.50);
-    `;
-
-    const close = document.createElement("button");
-    close.innerHTML = "×";
-    close.style.cssText = `
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      width: 44px;
-      height: 44px;
-      border: none;
-      background: rgba(255,255,255,.10);
-      color: white;
-      font-size: 32px;
-      border-radius: 50%;
-      cursor: pointer;
-      transition: background .2s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    `;
-    close.onmouseover = () => close.style.background = "rgba(255,255,255,.20)";
-    close.onmouseout = () => close.style.background = "rgba(255,255,255,.10)";
-    close.onclick = (e) => { e.stopPropagation(); lightbox.remove(); };
-
-    lightbox.appendChild(img);
-    lightbox.appendChild(close);
-    lightbox.onclick = () => lightbox.remove();
-
-    document.body.appendChild(lightbox);
-  }
-
-  // Setup CV download button to auto-detect first PDF
-  function setupCvDownload() {
-    const btn = document.getElementById("downloadCvBtn");
-    if (!btn) return;
-    
-    if (CERTIFICATIONS.length > 0) {
-      btn.href = `docs/${CERTIFICATIONS[0].file}`;
-      btn.download = `CV_${CERTIFICATIONS[0].name.replace(/\s+/g, "_")}.pdf`;
-    }
-  }
-
-  renderDocuments();
-  
-  function renderTechnicalTraining() {
-    const container = document.getElementById("technicalTrainingGrid");
-    if (!container) return;
-
-    container.innerHTML = TECHNICAL_TRAINING.map((img, idx) => `
-      <div class="gallery-item" onclick="openLightbox('assets/img/${img.name}', '${img.display}')">
-        <img src="assets/img/${img.name}" alt="${img.display}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 75%22%3E%3Crect fill=%22%230a1a3a%22 width=%22100%22 height=%2275%22/%3E%3Ctext x=%2250%22 y=%2240%22 text-anchor=%22middle%22 fill=%22%23b8c4ff%22 font-size=%2214%22%3EImage Error%3C/text%3E%3C/svg%3E'">
-        <div class="gallery-overlay">
-          <div class="gallery-icon">🔍</div>
-        </div>
-      </div>
-    `).join("");
-  }
-
-  renderTechnicalTraining();
-  renderGallery();
-  renderDocuments();
-  renderProjects();
-
-  // Render certifications in CV section
-  function renderCvCertifications() {
-    const container = document.getElementById("cvCertificationsGrid");
-    if (!container) return;
-
-    const allCerts = [...CERTIFICATIONS];
-    container.innerHTML = allCerts.map((doc, idx) => {
-      if (doc.file) {
-        return `
-          <a class="cert-item" href="docs/${doc.file}" target="_blank" rel="noopener" title="${doc.name}">
-            <div class="cert-icon">[C]</div>
-            <div style="font-size: 10px;">${doc.name.split(" ")[0]}</div>
-          </a>
-        `;
-      } else if (doc.display) {
-        return `
-          <div class="cert-item" onclick="openLightbox('assets/img/${doc.display}', '${doc.name}')" title="${doc.name}" style="cursor: pointer;">
-            <div class="cert-icon">[C]</div>
-            <div style="font-size: 10px;">${doc.name}</div>
-          </div>
-        `;
-      }
-    }).join("");
-  }
-
-  renderCvCertifications();
-  setupCvDownload();
-
-  // =============================
-  // PDF Generation (Harvard Format CV)
-  // =============================
-  async function generateCVPDF(e) {
-    if (e) e.preventDefault();
-    const btn = document.getElementById("downloadCvBtn");
-    const text = document.getElementById("downloadText");
-    
-    // Animate button
-    btn.style.pointerEvents = "none";
-    text.textContent = "Generating...";
-    btn.classList.add("loading");
-    
-    // Harvard Format CV HTML
-    const cvHTML = `
-      <!DOCTYPE html>
-      <html lang="en">
-      <head>
-        <meta charset="UTF-8">
-        <title>Amy Valentina Veraza García - CV</title>
-        <style>
-          * { margin: 0; padding: 0; box-sizing: border-box; }
-          body { 
-            font-family: 'Times New Roman', Times, serif; 
-            line-height: 1.5;
-            color: #000;
-            padding: 40px;
-            max-width: 8.5in;
-            margin: 0 auto;
-          }
-          h1 { font-size: 18pt; text-align: center; font-weight: bold; margin-bottom: 2pt; }
-          .contact { text-align: center; font-size: 10pt; margin-bottom: 12pt; }
-          h2 { 
-            font-size: 12pt; 
-            font-weight: bold; 
-            margin-top: 12pt; 
-            margin-bottom: 6pt;
-            padding-bottom: 2pt;
-            border-bottom: 1px solid #000;
-          }
-          .entry { margin-bottom: 8pt; }
-          .entry-head { display: flex; justify-content: space-between; }
-          .entry-title { font-weight: bold; }
-          .entry-date { font-style: italic; }
-          .entry-meta { font-style: italic; color: #333; margin-top: 2pt; }
-          .entry-bullets { margin-left: 20pt; margin-top: 4pt; }
-          .entry-bullets li { margin: 2pt 0; }
-          .two-col { display: flex; gap: 20pt; margin-top: 6pt; }
-          .col { flex: 1; }
-          .col p { margin: 2pt 0; font-size: 10pt; }
-        </style>
-      </head>
-      <body>
-        <h1>Amy Valentina Veraza García</h1>
-        <div class="contact">
-          Computer Engineering (UNAM) • Junior Developer<br>
-          Mexico City • averaza@comunidad.unam.mx • +52 5634369888<br>
-          GitHub: github.com/Amyv19
-        </div>
-
-        <h2>Professional Summary</h2>
-        <p style="font-size: 10pt; margin-bottom: 6pt;">
-          Junior backend-focused developer with professional experience building APIs, designing databases, and implementing web systems. 
-          Strong expertise in PHP (Laravel, Symfony), C#, JavaScript/TypeScript, PostgreSQL, and SQL Server. Experienced in REST API development.
-          Trained as Technician in Systems Maintenance & Microcomputers with knowledge of cybersecurity fundamentals, VPN configuration, and server administration.
-          Proven ability to deliver features with clean architecture, comprehensive validation, and ownership mindset. Currently pursuing Computer Engineering degree at UNAM.
-        </p>
-
-        <h2>Professional Experience</h2>
-        
-        <div class="entry">
-          <div class="entry-head">
-            <span class="entry-title">Junior Developer</span>
-            <span class="entry-date">Feb 2026 – Present</span>
-          </div>
-          <div class="entry-meta">3Demak • Full-time • Remote</div>
-          <ul class="entry-bullets">
-            <li>Web development support and feature implementation (backend/frontend as needed)</li>
-            <li>Collaborated with team to deliver updates and fixes</li>
-          </ul>
-        </div>
-
-        <div class="entry">
-          <div class="entry-head">
-            <span class="entry-title">Junior Developer</span>
-            <span class="entry-date">Feb 2026 – Present</span>
-          </div>
-          <div class="entry-meta">Vincourt y Cia S.A. de C.V.</div>
-          <ul class="entry-bullets">
-            <li>Development tasks for internal/assigned projects (backend and frontend)</li>
-            <li>Delivered changes under deadlines with version control</li>
-          </ul>
-        </div>
-
-        <div class="entry">
-          <div class="entry-head">
-            <span class="entry-title">Junior Software Developer</span>
-            <span class="entry-date">Dec 2024 – Jan 2026</span>
-          </div>
-          <div class="entry-meta">CTSolutions • Full-time • Mexico City (Hybrid)</div>
-          <ul class="entry-bullets">
-            <li>Backend development with PHP (Laravel, Symfony) and .NET (C#)</li>
-            <li>Implemented APIs, business logic, controllers/routes, validation, and database design</li>
-            <li>Frontend work with HTML/CSS/JavaScript, AJAX, jQuery; support in React</li>
-            <li>Worked with SQL Server and PostgreSQL; Jira tickets; Scrum workflow</li>
-          </ul>
-        </div>
-
-        <div class="entry">
-          <div class="entry-head">
-            <span class="entry-title">Full Stack Developer Intern</span>
-            <span class="entry-date">Aug 2024 – Jan 2025</span>
-          </div>
-          <div class="entry-meta">AK Agencia • Part-time • Mexico City</div>
-          <ul class="entry-bullets">
-            <li>Frontend and backend support with PHP (Laravel)</li>
-            <li>WordPress administration and feature implementation</li>
-            <li>Automation support with Python and SQL queries</li>
-          </ul>
-        </div>
-
-        <div class="entry">
-          <div class="entry-head">
-            <span class="entry-title">Support Engineer / Web Support</span>
-            <span class="entry-date">Apr 2024 – Sep 2024</span>
-          </div>
-          <div class="entry-meta">GCH Tecnología • Part-time • Mexico City</div>
-          <ul class="entry-bullets">
-            <li>On-site and remote support; preventive and corrective maintenance</li>
-            <li>WordPress administration and database support</li>
-            <li>Documentation and Linux/Windows support</li>
-          </ul>
-        </div>
-
-        <h2>Education</h2>
-        <div class="entry">
-          <div class="entry-head">
-            <span class="entry-title">Bachelor of Computer Engineering</span>
-            <span class="entry-date">In Progress</span>
-          </div>
-          <div class="entry-meta">National Autonomous University of Mexico (UNAM)</div>
-        </div>
-
-        <h2>Core Competencies</h2>
-        <div class="two-col">
-          <div class="col">
-            <p><b>Programming Languages:</b> PHP, C#, JavaScript, TypeScript, Python, SQL</p>
-            <p><b>Backend & Databases:</b> Laravel, Symfony, .NET, Node.js, PostgreSQL, SQL Server, REST APIs</p>
-            <p><b>Infrastructure & Security:</b> Server Administration, VPN Configuration, Cybersecurity Basics, Docker</p>
-          </div>
-          <div class="col">
-            <p><b>Frontend:</b> HTML5, CSS3, JavaScript, jQuery, React, AJAX</p>
-            <p><b>Tools & Methods:</b> Git, Jira, Postman, Scrum, Linux, System Maintenance</p>
-            <p><b>Technical Training:</b> Technician in Systems Maintenance & Microcomputers</p>
-          </div>
-        </div>
-
-        <h2>Featured Projects & Awards</h2>
-        <div class="entry">
-          <div class="entry-head">
-            <span class="entry-title">BLU AI - Hurricane Prediction System</span>
-            <span class="entry-date">In Deployment</span>
-          </div>
-          <div class="entry-meta">AI-powered chatbot leveraging Llama Meta for hurricane prediction and analysis</div>
-          <p style="font-size: 10pt; margin: 4pt 0;">
-            React-based application integrating advanced machine learning models for real-time weather intelligence and disaster preparedness. Demonstrates expertise in full-stack development, AI/ML integration, and production-ready application deployment.
-          </p>
-        </div>
-
-        <div class="entry">
-          <div class="entry-title">META International Hackathon Winner</div>
-          <div class="entry-meta">International Competition • Prize Pool: $2,000,000 USD</div>
-        </div>
-
-        <div class="entry">
-          <div class="entry-title">"Construyendo el Futuro" (Building the Future) Award</div>
-          <div class="entry-meta">Achievement Recognition • Prize: $80,000 MXN</div>
-        </div>
-
-        <div class="entry">
-          <div class="entry-title">NASA Space Hackathon</div>
-          <div class="entry-meta">Participant in international space-themed competition</div>
-        </div>
-
-        <h2>Certifications</h2>
-        <ul style="margin-left: 20pt; font-size: 10pt;">
-          <li>InAgent Professional Certification</li>
-          <li>InSpeech Professional Certification</li>
-          <li>Scrum Foundation Professional Certificate (SFPC)</li>
-          <li>English B2 Level</li>
-          <li>Work Credentials & Professional References</li>
-        </ul>
-
-        <h2>Languages</h2>
-        <p style="font-size: 10pt;">Spanish (Native) • English (B2)</p>
-
-        <p style="margin-top: 20pt; font-size: 9pt; border-top: 1px solid #ccc; padding-top: 10pt; text-align: center;">
-          Generated on ${new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-        </p>
-      </body>
-      </html>
-    `;
-
-    // Create a temporary element
-    const element = document.createElement('div');
-    element.innerHTML = cvHTML;
-
-    try {
-      // Load html2pdf library dynamically
-      const script = document.createElement('script');
-      script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
-      
-      script.onload = () => {
-        const opt = {
-          margin: 0,
-          filename: 'CV_Amy_Valentina_Harvard.pdf',
-          image: { type: 'jpeg', quality: 0.98 },
-          html2canvas: { scale: 2 },
-          jsPDF: { format: 'letter', orientation: 'portrait' }
-        };
-
-        const docElement = document.createElement('div');
-        docElement.innerHTML = cvHTML;
-        document.body.appendChild(docElement);
-        
-        html2pdf().set(opt).from(docElement).save().then(() => {
-          document.body.removeChild(docElement);
-          // Reset button
-          btn.style.pointerEvents = "auto";
-          text.textContent = "✓ Download CV (Harvard Format)";
-          btn.classList.remove("loading");
-          
-          setTimeout(() => {
-            text.textContent = "Download CV (Harvard Format)";
-          }, 3000);
-        });
-      };
-      
-      document.head.appendChild(script);
-    } catch (err) {
-      console.error('PDF generation failed:', err);
-      text.textContent = "Download CV (Harvard Format)";
-      btn.style.pointerEvents = "auto";
-      btn.classList.remove("loading");
-    }
-  }
-
-
-  // =============================
-  // Schedule generation: everything free = Work
+  // ✅ Schedule (YOUR CURRENT CLASSES)
   // =============================
   const TIMES = [
     "07:00–08:00","08:00–09:00","09:00–10:00","10:00–11:00","11:00–12:00","12:00–13:00",
@@ -1922,37 +1072,46 @@
   ];
   const DAYS = ["Mon","Tue","Wed","Thu","Fri", "Sat"];
 
+  // Based on what you shared:
+  // - Mon/Wed: Electricity & Magnetism 13:00–15:00
+  // - Tue/Thu: On-site class 07:00–08:30 (represented as 07–08 and 08–09)
+  // - Sat: Resources & Needs of Mexico 08:00–12:00
+  // - Extra classes from your previous schedule (Microprocessors/Networks) kept (hybrid evenings)
   const EVENTS = [
-    { day:"Mon", time:"07:00–08:00", title:"Text & Image Processing", meta:"On-site", kind:"class", mode:"onsite" },
-    { day:"Mon", time:"08:00–09:00", title:"Text & Image Processing", meta:"On-site", kind:"class", mode:"onsite" },
+    // Tue/Thu early class 07:00-08:30
+    { day:"Tue", time:"07:00–08:00", title:"On-site Class", meta:"On-site", kind:"class", mode:"onsite" },
+    { day:"Tue", time:"08:00–09:00", title:"On-site Class", meta:"On-site (until 08:30)", kind:"class", mode:"onsite" },
 
-    { day:"Tue", time:"07:00–08:00", title:"Artificial Intelligence", meta:"On-site", kind:"class", mode:"onsite" },
-    { day:"Tue", time:"08:00–09:00", title:"Artificial Intelligence", meta:"On-site", kind:"class", mode:"onsite" },
+    { day:"Thu", time:"07:00–08:00", title:"On-site Class", meta:"On-site", kind:"class", mode:"onsite" },
+    { day:"Thu", time:"08:00–09:00", title:"On-site Class", meta:"On-site (until 08:30)", kind:"class", mode:"onsite" },
 
-    { day:"Wed", time:"07:00–08:00", title:"Text & Image Processing", meta:"On-site", kind:"class", mode:"onsite" },
-    { day:"Wed", time:"08:00–09:00", title:"Text & Image Processing", meta:"On-site", kind:"class", mode:"onsite" },
+    // Mon/Wed Electricity & Magnetism 13:00–15:00
+    { day:"Mon", time:"13:00–14:00", title:"Electricity & Magnetism", meta:"On-site", kind:"class", mode:"onsite" },
+    { day:"Mon", time:"14:00–15:00", title:"Electricity & Magnetism", meta:"On-site", kind:"class", mode:"onsite" },
 
-    { day:"Thu", time:"07:00–08:00", title:"Artificial Intelligence", meta:"On-site", kind:"class", mode:"onsite" },
-    { day:"Thu", time:"08:00–09:00", title:"Artificial Intelligence", meta:"On-site", kind:"class", mode:"onsite" },
+    { day:"Wed", time:"13:00–14:00", title:"Electricity & Magnetism", meta:"On-site", kind:"class", mode:"onsite" },
+    { day:"Wed", time:"14:00–15:00", title:"Electricity & Magnetism", meta:"On-site", kind:"class", mode:"onsite" },
 
+    // Sat Resources & Needs of Mexico 08:00–12:00
+    { day:"Sat", time:"08:00–09:00", title:"Resources & Needs of Mexico", meta:"Class (On-site)", kind:"class", mode:"onsite" },
+    { day:"Sat", time:"09:00–10:00", title:"Resources & Needs of Mexico", meta:"Class (On-site)", kind:"class", mode:"onsite" },
+    { day:"Sat", time:"10:00–11:00", title:"Resources & Needs of Mexico", meta:"Class (On-site)", kind:"class", mode:"onsite" },
+    { day:"Sat", time:"11:00–12:00", title:"Resources & Needs of Mexico", meta:"Class (On-site)", kind:"class", mode:"onsite" },
+
+    // Keep your evening hybrid blocks you had before (optional but you included them)
     { day:"Tue", time:"17:30–18:00", title:"Microprocessors", meta:"Hybrid", kind:"class", mode:"hybrid" },
     { day:"Tue", time:"18:00–19:00", title:"Microprocessors", meta:"Hybrid", kind:"class", mode:"hybrid" },
-    { day:"Tue", time:"19:00–20:00", title:"Networks", meta:"Hybrid", kind:"class", mode:"hybrid" },
+    { day:"Tue", time:"19:00–20:00", title:"Secure Data Networks", meta:"Hybrid", kind:"class", mode:"hybrid" },
 
     { day:"Thu", time:"17:30–18:00", title:"Microprocessors", meta:"Hybrid", kind:"class", mode:"hybrid" },
     { day:"Thu", time:"18:00–19:00", title:"Microprocessors", meta:"Hybrid", kind:"class", mode:"hybrid" },
-    { day:"Thu", time:"19:00–20:00", title:"Networks", meta:"Hybrid", kind:"class", mode:"hybrid" },
+    { day:"Thu", time:"19:00–20:00", title:"Secure Data Networks", meta:"Hybrid", kind:"class", mode:"hybrid" },
 
-    { day:"Mon", time:"19:00–20:00", title:"Networks", meta:"Hybrid", kind:"class", mode:"hybrid" },
+    { day:"Mon", time:"19:00–20:00", title:"Secure Data Networks", meta:"Hybrid", kind:"class", mode:"hybrid" },
 
-    { day:"Wed", time:"19:00–20:00", title:"Networks Lab", meta:"On-site", kind:"lab", mode:"onsite" },
+    { day:"Wed", time:"19:00–20:00", title:"Secure Data Networks Lab", meta:"On-site", kind:"lab", mode:"onsite" },
     { day:"Fri", time:"09:00–10:00", title:"Microprocessors Lab", meta:"On-site", kind:"lab", mode:"onsite" },
     { day:"Fri", time:"10:00–11:00", title:"Microprocessors Lab", meta:"On-site", kind:"lab", mode:"onsite" },
-
-    { day:"Sat", time:"08:00–09:00", title:"Resources & Needs of Mexico", meta:"Class", kind:"class", mode:"onsite" },
-    { day:"Sat", time:"09:00–10:00", title:"Resources & Needs of Mexico", meta:"Class", kind:"class", mode:"onsite" },
-    { day:"Sat", time:"10:00–11:00", title:"Resources & Needs of Mexico", meta:"Class", kind:"class", mode:"onsite" },
-    { day:"Sat", time:"11:00–12:00", title:"Resources & Needs of Mexico", meta:"Class", kind:"class", mode:"onsite" },
   ];
 
   const key = (d,t)=> `${d}__${t}`;
@@ -1996,6 +1155,37 @@
   }
 
   renderSchedule();
+
+  // =============================
+  // ✅ Certifications INSIDE CV module
+  // Put PDFs in /docs/
+  // =============================
+  const CV_CERTIFICATIONS = [
+    { title: "InAgent Certification", file: "certification-Inagent-averaza@ctsolutionsmx.com.pdf" },
+    { title: "InSpeech Certification", file: "certification-Inspeech-averaza@ctsolutionsmx.com.pdf" },
+    { title: "IC InAgent", file: "IC_Inagent_Amy Valentina Veraza García.pdf" },
+    { title: "English B2", file: "ingles.pdf" },
+    { title: "Work Credentials", file: "Constancias_Veraza Garcia Amy Valentina (3).pdf" },
+    // If you prefer image instead of PDF, add an image key and switch rendering
+    // { title: "Scrum Foundation", file: "SFPC.pdf" }
+  ];
+
+  function renderCvCertifications(){
+    const container = document.getElementById("cvCertGrid");
+    if (!container) return;
+
+    container.innerHTML = CV_CERTIFICATIONS.map((c, i) => `
+      <a class="cert" href="docs/${encodeURIComponent(c.file)}" target="_blank" rel="noopener">
+        <div class="badge">★</div>
+        <div>
+          <b>${c.title}</b>
+          <small>${c.file}</small>
+        </div>
+      </a>
+    `).join("");
+  }
+
+  renderCvCertifications();
 </script>
 </body>
 </html>
