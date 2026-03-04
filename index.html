@@ -809,18 +809,27 @@
 
       <div class="divider"></div>
 
-      <!-- DOCUMENTS SECTION -->
+      <!-- CERTIFICATIONS SECTION -->
       <div class="documents-section">
-        <h3 style="margin-top:0;">📄 Documentos & Certificaciones</h3>
-        <p class="muted">Descarga tus certificaciones, constancias y documentos profesionales:</p>
-        <div class="docs-grid" id="docsGrid"></div>
+        <h3 style="margin-top:0;">🏆 Certificaciones Profesionales</h3>
+        <p class="muted">Descarga mis certificaciones y credenciales:</p>
+        <div class="docs-grid" id="certificationsGrid"></div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- WORK DOCUMENTS SECTION -->
+      <div class="documents-section">
+        <h3 style="margin-top:0;">📋 Documentación de Trabajo</h3>
+        <p class="muted">Manuales y documentación profesional:</p>
+        <div class="docs-grid" id="workDocsGrid"></div>
       </div>
 
       <div class="divider"></div>
 
       <!-- GALLERY SECTION -->
       <div class="gallery-section">
-        <h3 style="margin-top:0;">🖼️ Galería de Imágenes</h3>
+        <h3 style="margin-top:0;">🖼️ Galería de Fotos</h3>
         <div class="gallery-grid" id="galleryGrid"></div>
       </div>
     </div>
@@ -1015,7 +1024,7 @@
 
       <div class="mini">
         <h3>🏆 Certificaciones</h3>
-        <div id="certificationsGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-top: 12px;"></div>
+        <div id="cvCertificationsGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-top: 12px;"></div>
       </div>
     </div>
 
@@ -1263,18 +1272,22 @@
   // Dynamic Documents & Gallery Loading
   // =============================
 
-  // List of documents (update these filenames to match your actual files)
-  const DOCUMENTS = [
-    { name: "Certification InAgent", file: "certification-Inagent-averaza@ctsolutionsmx.com.pdf" },
-    { name: "Certification InSpeech", file: "certification-Inspeech-averaza@ctsolutionsmx.com.pdf" },
-    { name: "Constancias Veraza García", file: "Constancias_Veraza Garcia Amy Valentina (3).pdf" },
-    { name: "IC InAgent - Amy Valentina", file: "IC_Inagent_Amy Valentina Veraza García.pdf" },
-    { name: "Inglés - Certificado", file: "ingles.pdf" },
+  // Certificaciones (credenciales profesionales)
+  const CERTIFICATIONS = [
+    { name: "InAgent Certification", file: "certification-Inagent-averaza@ctsolutionsmx.com.pdf" },
+    { name: "InSpeech Certification", file: "certification-Inspeech-averaza@ctsolutionsmx.com.pdf" },
+    { name: "IC InAgent", file: "IC_Inagent_Amy Valentina Veraza García.pdf" },
+    { name: "Inglés B2", file: "ingles.pdf" },
+    { name: "Constancias", file: "Constancias_Veraza Garcia Amy Valentina (3).pdf" },
+  ];
+
+  // Documentación de trabajo (manuales, guías)
+  const WORK_DOCUMENTS = [
     { name: "Manual Portal", file: "Manual-Portal (1) (1).pdf" },
     { name: "Plata Documentación", file: "Plata documentacion.pdf" },
   ];
 
-  // List of images (update these filenames to match your actual files)
+  // Galerías de fotos
   const GALLERY_IMAGES = [
     { name: "profile.jpg", display: "Foto Perfil" },
     { name: "carrera.png", display: "Carrera Técnica" },
@@ -1287,16 +1300,29 @@
   ];
 
   function renderDocuments() {
-    const container = document.getElementById("docsGrid");
-    if (!container) return;
+    // Render certifications
+    const certContainer = document.getElementById("certificationsGrid");
+    if (certContainer) {
+      certContainer.innerHTML = CERTIFICATIONS.map((doc, idx) => `
+        <a class="doc-item" href="docs/${doc.file}" target="_blank" rel="noopener">
+          <div class="doc-icon">🎓</div>
+          <div class="doc-name">${doc.name}</div>
+          <div class="doc-size">PDF</div>
+        </a>
+      `).join("");
+    }
 
-    container.innerHTML = DOCUMENTS.map((doc, idx) => `
-      <a class="doc-item" href="docs/${doc.file}" target="_blank" rel="noopener">
-        <div class="doc-icon">📄</div>
-        <div class="doc-name">${doc.name}</div>
-        <div class="doc-size">PDF</div>
-      </a>
-    `).join("");
+    // Render work documents
+    const workContainer = document.getElementById("workDocsGrid");
+    if (workContainer) {
+      workContainer.innerHTML = WORK_DOCUMENTS.map((doc, idx) => `
+        <a class="doc-item" href="docs/${doc.file}" target="_blank" rel="noopener">
+          <div class="doc-icon">📘</div>
+          <div class="doc-name">${doc.name}</div>
+          <div class="doc-size">PDF</div>
+        </a>
+      `).join("");
+    }
   }
 
   function renderGallery() {
@@ -1373,9 +1399,9 @@
     const btn = document.getElementById("downloadCvBtn");
     if (!btn) return;
     
-    if (DOCUMENTS.length > 0) {
-      btn.href = `docs/${DOCUMENTS[0].file}`;
-      btn.download = `CV_${DOCUMENTS[0].name.replace(/\s+/g, "_")}.pdf`;
+    if (CERTIFICATIONS.length > 0) {
+      btn.href = `docs/${CERTIFICATIONS[0].file}`;
+      btn.download = `CV_${CERTIFICATIONS[0].name.replace(/\s+/g, "_")}.pdf`;
     }
   }
 
@@ -1384,19 +1410,20 @@
   setupCvDownload();
 
   // Render certifications in CV section
-  function renderCertifications() {
-    const container = document.getElementById("certificationsGrid");
+  function renderCvCertifications() {
+    const container = document.getElementById("cvCertificationsGrid");
     if (!container) return;
 
-    container.innerHTML = DOCUMENTS.map((doc, idx) => `
+    const allCerts = [...CERTIFICATIONS];
+    container.innerHTML = allCerts.map((doc, idx) => `
       <a class="cert-item" href="docs/${doc.file}" target="_blank" rel="noopener" title="${doc.name}">
-        <div class="cert-icon">📜</div>
+        <div class="cert-icon">🎓</div>
         <div style="font-size: 10px;">${doc.name.split(" ")[0]}</div>
       </a>
     `).join("");
   }
 
-  renderCertifications();
+  renderCvCertifications();
 
 
   // =============================
