@@ -680,6 +680,38 @@
       grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
     }
   }
+
+  /* Certifications Grid */
+  .cert-item {
+    background: linear-gradient(135deg, rgba(108,124,255,.15), rgba(34,211,238,.10));
+    border: 1px solid rgba(108,124,255,.35);
+    border-radius: 12px;
+    padding: 10px 8px;
+    text-align: center;
+    transition: transform .14s ease, box-shadow .14s ease;
+    text-decoration: none;
+    color: rgba(234,240,255,.92);
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 850;
+    line-height: 1.2;
+    word-break: break-word;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .cert-item:hover {
+    transform: translateY(-2px);
+    border-color: rgba(108,124,255,.55);
+    box-shadow: 0 8px 16px rgba(108,124,255,.20);
+  }
+
+  .cert-icon {
+    font-size: 20px;
+    opacity: .95;
+  }
 </style>
 </head>
 
@@ -982,12 +1014,8 @@
       </div>
 
       <div class="mini">
-        <h3>Training / Certifications</h3>
-        <p class="muted">Place your PDFs inside <b>assets/docs/</b> and link them here:</p>
-        <ul>
-          <li><a class="btn" href="assets/docs/SFPC.pdf" target="_blank" rel="noopener">Scrum Foundation (PDF)</a></li>
-          <li><a class="btn" href="assets/docs/Hackathon_META.pdf" target="_blank" rel="noopener">Hackathon META Winner (PDF)</a></li>
-        </ul>
+        <h3>🏆 Certificaciones</h3>
+        <div id="certificationsGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-top: 12px;"></div>
       </div>
     </div>
 
@@ -1351,6 +1379,21 @@
   renderDocuments();
   renderGallery();
   setupCvDownload();
+
+  // Render certifications in CV section
+  function renderCertifications() {
+    const container = document.getElementById("certificationsGrid");
+    if (!container) return;
+
+    container.innerHTML = DOCUMENTS.map((doc, idx) => `
+      <a class="cert-item" href="docs/${doc.file}" target="_blank" rel="noopener" title="${doc.name}">
+        <div class="cert-icon">📜</div>
+        <div style="font-size: 10px;">${doc.name.split(" ")[0]}</div>
+      </a>
+    `).join("");
+  }
+
+  renderCertifications();
 
 
   // =============================
