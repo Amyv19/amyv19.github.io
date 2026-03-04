@@ -282,6 +282,8 @@
     cursor:pointer;
     transition: transform .14s ease, background .2s ease, border-color .2s ease;
     user-select:none;
+    position: relative;
+    overflow: hidden;
   }
   .btn:hover{
     transform: translateY(-2px);
@@ -565,9 +567,6 @@
     letter-spacing: .2px;
     color: rgba(234,240,255,.92);
     margin-bottom: 8px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
   }
 
   .docs-grid {
@@ -578,12 +577,12 @@
   }
 
   .doc-item {
-    background: linear-gradient(135deg, rgba(108,124,255,.12), rgba(34,211,238,.08));
-    border: 1px solid rgba(108,124,255,.25);
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.10);
     border-radius: 14px;
-    padding: 14px;
+    padding: 12px;
     text-align: center;
-    transition: transform .14s ease, box-shadow .14s ease, background .2s ease, border-color .2s ease;
+    transition: transform .14s ease, box-shadow .14s ease, background .2s ease;
     text-decoration: none;
     color: rgba(234,240,255,.92);
     display: flex;
@@ -593,16 +592,15 @@
   }
 
   .doc-item:hover {
-    transform: translateY(-4px);
-    background: linear-gradient(135deg, rgba(108,124,255,.18), rgba(34,211,238,.14));
+    transform: translateY(-3px);
+    background: rgba(255,255,255,.10);
     border-color: rgba(108,124,255,.55);
-    box-shadow: 0 12px 28px rgba(108,124,255,.25);
+    box-shadow: 0 12px 24px rgba(108,124,255,.20);
   }
 
   .doc-icon {
     font-size: 28px;
-    opacity: 1;
-    line-height: 1;
+    opacity: .9;
   }
 
   .doc-name {
@@ -615,16 +613,15 @@
 
   .doc-size {
     font-size: 10px;
-    color: rgba(108,124,255,.8);
+    color: rgba(234,240,255,.65);
     margin-top: 4px;
-    font-weight: 700;
   }
 
   /* Gallery Grid */
   .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 14px;
+    gap: 12px;
     margin-top: 12px;
   }
 
@@ -632,17 +629,16 @@
     position: relative;
     border-radius: 14px;
     overflow: hidden;
-    border: 1px solid rgba(108,124,255,.25);
-    background: linear-gradient(135deg, rgba(34,211,238,.10), rgba(108,124,255,.08));
+    border: 1px solid rgba(255,255,255,.10);
+    background: rgba(255,255,255,.06);
     aspect-ratio: 4 / 3;
     cursor: pointer;
-    transition: transform .14s ease, box-shadow .14s ease, border-color .2s ease;
+    transition: transform .14s ease, box-shadow .14s ease;
   }
 
   .gallery-item:hover {
-    transform: scale(1.05);
-    border-color: rgba(34,211,238,.55);
-    box-shadow: 0 12px 32px rgba(34,211,238,.30);
+    transform: scale(1.04);
+    box-shadow: 0 12px 28px rgba(108,124,255,.25);
   }
 
   .gallery-item img {
@@ -654,13 +650,13 @@
   }
 
   .gallery-item:hover img {
-    transform: scale(1.08);
+    transform: scale(1.05);
   }
 
   .gallery-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(0,0,0,.5);
+    background: rgba(0,0,0,.4);
     opacity: 0;
     transition: opacity .2s ease;
     display: flex;
@@ -804,11 +800,6 @@
   }
 
   /* Download Button Animation */
-  .btn {
-    position: relative;
-    overflow: hidden;
-  }
-
   .btn::before {
     content: '';
     position: absolute;
@@ -969,25 +960,16 @@
       <!-- CERTIFICATIONS SECTION -->
       <div class="documents-section">
         <h3 style="margin-top:0;">★ Professional Certifications</h3>
-        <p class="muted">Certifications, badges, and professional credentials:</p>
+        <p class="muted">Download my certifications and professional credentials:</p>
         <div class="docs-grid" id="certificationsGrid"></div>
       </div>
 
       <div class="divider"></div>
 
-      <!-- CREDENTIALS & LEGAL DOCUMENTS -->
+      <!-- COMPLETED PROJECTS SECTION -->
       <div class="documents-section">
-        <h3 style="margin-top:0;">📄 Credentials & Legal Documents</h3>
-        <p class="muted">Official credentials and certifications with constancias:</p>
-        <div class="docs-grid" id="credentialsGrid"></div>
-      </div>
-
-      <div class="divider"></div>
-
-      <!-- MANUALS & DOCUMENTATION -->
-      <div class="documents-section">
-        <h3 style="margin-top:0;">📚 Manuals & Documentation</h3>
-        <p class="muted">Technical guides and documentation from my work:</p>
+        <h3 style="margin-top:0;">✓ Completed Work & Documentation</h3>
+        <p class="muted">Projects and documentation I've worked on:</p>
         <div class="docs-grid" id="workDocsGrid"></div>
       </div>
 
@@ -1282,8 +1264,6 @@
 
   // =============================
   // Inline SVG Logo System
-  // - If your asset file exists, it will load.
-  // - If it doesn't exist, we auto-replace with the embedded SVG.
   // =============================
 
   function monogram(text, accent){
@@ -1307,7 +1287,6 @@
   }
 
   const LogoSVG = {
-    // Tech logos (clean + recognizable style; works small)
     laravel: `
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
         <defs>
@@ -1350,7 +1329,6 @@
       </svg>
     `.trim(),
 
-    // Company/Institution logos (clean monograms; replace later with real PNGs if you have them)
     unam: monogram("UNAM", "#6c7cff"),
     "3demak": monogram("3D", "#22d3ee"),
     vincourt: monogram("VC", "#b8c4ff"),
@@ -1370,20 +1348,17 @@
       const svg = LogoSVG[key];
       if (!svg) return;
 
-      // If src is missing -> inline immediately.
       if (!img.getAttribute("src")) {
         img.src = svgToDataUri(svg);
         return;
       }
 
-      // If src exists but fails -> fallback to inline.
       img.addEventListener("error", () => {
         img.src = svgToDataUri(svg);
       }, { once: true });
     });
   }
 
-  // Hero banner fallback (in case assets/img/hero-code.jpg is missing)
   function applyHeroFallback(){
     const heroImg = document.getElementById("heroImg");
     if (!heroImg) return;
@@ -1438,65 +1413,55 @@
   // Dynamic Documents & Gallery Loading
   // =============================
 
-  // Professional Certifications & Badges
   const CERTIFICATIONS = [
     { name: "InAgent Certification", file: "certification-Inagent-averaza@ctsolutionsmx.com.pdf" },
     { name: "InSpeech Certification", file: "certification-Inspeech-averaza@ctsolutionsmx.com.pdf" },
     { name: "IC InAgent", file: "IC_Inagent_Amy Valentina Veraza García.pdf" },
     { name: "English B2", file: "ingles.pdf" },
+    { name: "Work Credentials", file: "Constancias_Veraza Garcia Amy Valentina (3).pdf" },
     { name: "Scrum Foundation", display: "scrum.png" },
-    { name: "PHP Certification", display: "php.png" },
-    { name: "SRCUM Certification", display: "srcum.png" },
   ];
 
-  // Credentials & Legal Documents
-  const CREDENTIALS_DOCUMENTS = [
-    { name: "Work Credentials", file: "Constancias_Veraza Garcia Amy Valentina (3).pdf", icon: "📄" },
-  ];
-
-  // Featured Projects & Awards
   const PROJECTS = [
-    { 
-      title: "BLU AI - Hurricane Prediction System", 
+    {
+      title: "BLU AI - Hurricane Prediction System",
       award: "▸ In Deployment",
       desc: "AI-powered chatbot for hurricane prediction and analysis. Built with React, Llama Meta, and machine learning models.",
-      tags: ["React", "Llama Meta", "AI", "Chatbot", "ML"] 
+      tags: ["React", "Llama Meta", "AI", "Chatbot", "ML"]
     },
-    { 
-      title: "META Winner - International Hackathon", 
+    {
+      title: "META Winner - International Hackathon",
       award: "$2M Prize Pool",
       desc: "International hackathon winner. Demonstrated innovative problem-solving and full-stack development capabilities.",
-      tags: ["Hackathon", "Winner", "META", "International"] 
+      tags: ["Hackathon", "Winner", "META", "International"]
     },
-    { 
-      title: "Construyendo el Futuro Award", 
+    {
+      title: "Construyendo el Futuro Award",
       award: "$80,000 MXN",
       desc: "Prestigious award for innovation and technological development. Recognized for outstanding contribution to future technologies.",
-      tags: ["Award", "Innovation", "Mexico"] 
+      tags: ["Award", "Innovation", "Mexico"]
     },
-    { 
-      title: "NASA Space Hackathon", 
+    {
+      title: "NASA Space Hackathon",
       award: "★ Participant",
       desc: "Participated in NASA space technology hackathon, focusing on innovative solutions for space exploration challenges.",
-      tags: ["NASA", "Space", "Hackathon", "Innovation"] 
+      tags: ["NASA", "Space", "Hackathon", "Innovation"]
     },
   ];
 
-  // Completed Work & Documentation (manuals and guides)
   const WORK_DOCUMENTS = [
     { name: "Portal Manual", file: "Manual-Portal (1) (1).pdf", icon: "[PDF]" },
     { name: "Ludoteca Manual", file: "Manual Ludoteca.pdf", icon: "[PDF]" },
     { name: "Platform Documentation", file: "Plata documentacion.pdf", icon: "[PDF]" },
   ];
 
-  // Technical Training Images
   const TECHNICAL_TRAINING = [
     { name: "carrera.png", display: "Technician in Systems Maintenance" },
   ];
 
-  // Photo Gallery
   const GALLERY_IMAGES = [
     { name: "profile.jpg", display: "Profile Photo" },
+    { name: "php.png", display: "PHP Certification" },
     { name: "img1.jpeg", display: "Gallery 1" },
     { name: "img2.jpeg", display: "Gallery 2" },
     { name: "img3.jpeg", display: "Gallery 3" },
@@ -1504,58 +1469,44 @@
   ];
 
   function renderDocuments() {
-    // Render certifications
     const certContainer = document.getElementById("certificationsGrid");
     if (certContainer) {
-      certContainer.innerHTML = CERTIFICATIONS.map((doc, idx) => {
+      certContainer.innerHTML = CERTIFICATIONS.map((doc) => {
         if (doc.file) {
           return `
-            <a class="doc-item" href="docs/${doc.file}" target="_blank" rel="noopener" title="${doc.name}">
-              <div class="doc-icon">🏆</div>
+            <a class="doc-item" href="docs/${doc.file}" target="_blank" rel="noopener">
+              <div class="doc-icon">[C]</div>
               <div class="doc-name">${doc.name}</div>
               <div class="doc-size">PDF</div>
             </a>
           `;
         } else if (doc.display) {
           return `
-            <div class="doc-item" onclick="openLightbox('assets/img/${doc.display}', '${doc.name}')" style="cursor: pointer;" title="${doc.name}">
-              <div class="doc-icon">🏆</div>
+            <div class="doc-item" onclick="openLightbox('assets/img/${doc.display}', '${doc.name}')" style="cursor: pointer;">
+              <div class="doc-icon">[C]</div>
               <div class="doc-name">${doc.name}</div>
-              <div class="doc-size">Badge</div>
+              <div class="doc-size">Certificate</div>
             </div>
           `;
         }
+        return "";
       }).join("");
     }
 
-    // Render credentials & legal documents
-    const credentialsContainer = document.getElementById("credentialsGrid");
-    if (credentialsContainer) {
-      credentialsContainer.innerHTML = CREDENTIALS_DOCUMENTS.map((doc, idx) => `
-        <a class="doc-item" href="docs/${doc.file}" target="_blank" rel="noopener" title="${doc.name}">
-          <div class="doc-icon">${doc.icon || "📋"}</div>
+    const workContainer = document.getElementById("workDocsGrid");
+    if (workContainer) {
+      workContainer.innerHTML = WORK_DOCUMENTS.map((doc) => `
+        <a class="doc-item" href="docs/${doc.file}" target="_blank" rel="noopener">
+          <div class="doc-icon">${doc.icon || "[D]"}</div>
           <div class="doc-name">${doc.name}</div>
           <div class="doc-size">PDF</div>
         </a>
       `).join("");
     }
 
-    // Render work documents (manuals)
-    const workContainer = document.getElementById("workDocsGrid");
-    if (workContainer) {
-      workContainer.innerHTML = WORK_DOCUMENTS.map((doc, idx) => `
-        <a class="doc-item" href="docs/${doc.file}" target="_blank" rel="noopener" title="${doc.name}">
-          <div class="doc-icon">📘</div>
-          <div class="doc-name">${doc.name}</div>
-          <div class="doc-size">Manual</div>
-        </a>
-      `).join("");
-    }
-
-    // Render projects
     const projectsContainer = document.getElementById("projectsGrid");
     if (projectsContainer) {
-      projectsContainer.innerHTML = PROJECTS.map((project, idx) => `
+      projectsContainer.innerHTML = PROJECTS.map((project) => `
         <div class="project-card">
           <div class="project-award">${project.award}</div>
           <h3 class="project-title">${project.title}</h3>
@@ -1572,9 +1523,25 @@
     const container = document.getElementById("galleryGrid");
     if (!container) return;
 
-    container.innerHTML = GALLERY_IMAGES.map((img, idx) => `
+    container.innerHTML = GALLERY_IMAGES.map((img) => `
       <div class="gallery-item" onclick="openLightbox('assets/img/${img.name}', '${img.display}')">
-        <img src="assets/img/${img.name}" alt="${img.display}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 75%22%3E%3Crect fill=%22%230a1a3a%22 width=%22100%22 height=%2275%22/%3E%3Ctext x=%2250%22 y=%2240%22 text-anchor=%22middle%22 fill=%22%23b8c4ff%22 font-size=%2214%22%3EImage Error%3C/text%3E%3C/svg%3E'">
+        <img src="assets/img/${img.name}" alt="${img.display}"
+             onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 75%22%3E%3Crect fill=%22%230a1a3a%22 width=%22100%22 height=%2275%22/%3E%3Ctext x=%2250%22 y=%2240%22 text-anchor=%22middle%22 fill=%22%23b8c4ff%22 font-size=%2214%22%3EImage Error%3C/text%3E%3C/svg%3E'">
+        <div class="gallery-overlay">
+          <div class="gallery-icon">🔍</div>
+        </div>
+      </div>
+    `).join("");
+  }
+
+  function renderTechnicalTraining() {
+    const container = document.getElementById("technicalTrainingGrid");
+    if (!container) return;
+
+    container.innerHTML = TECHNICAL_TRAINING.map((img) => `
+      <div class="gallery-item" onclick="openLightbox('assets/img/${img.name}', '${img.display}')">
+        <img src="assets/img/${img.name}" alt="${img.display}"
+             onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 75%22%3E%3Crect fill=%22%230a1a3a%22 width=%22100%22 height=%2275%22/%3E%3Ctext x=%2250%22 y=%2240%22 text-anchor=%22middle%22 fill=%22%23b8c4ff%22 font-size=%2214%22%3EImage Error%3C/text%3E%3C/svg%3E'">
         <div class="gallery-overlay">
           <div class="gallery-icon">🔍</div>
         </div>
@@ -1637,45 +1604,22 @@
     document.body.appendChild(lightbox);
   }
 
-  // Setup CV download button to auto-detect first PDF
   function setupCvDownload() {
     const btn = document.getElementById("downloadCvBtn");
     if (!btn) return;
-    
-    if (CERTIFICATIONS.length > 0) {
+
+    if (CERTIFICATIONS.length > 0 && CERTIFICATIONS[0].file) {
       btn.href = `docs/${CERTIFICATIONS[0].file}`;
       btn.download = `CV_${CERTIFICATIONS[0].name.replace(/\s+/g, "_")}.pdf`;
     }
   }
 
-  renderDocuments();
-  
-  function renderTechnicalTraining() {
-    const container = document.getElementById("technicalTrainingGrid");
-    if (!container) return;
-
-    container.innerHTML = TECHNICAL_TRAINING.map((img, idx) => `
-      <div class="gallery-item" onclick="openLightbox('assets/img/${img.name}', '${img.display}')">
-        <img src="assets/img/${img.name}" alt="${img.display}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 75%22%3E%3Crect fill=%22%230a1a3a%22 width=%22100%22 height=%2275%22/%3E%3Ctext x=%2250%22 y=%2240%22 text-anchor=%22middle%22 fill=%22%23b8c4ff%22 font-size=%2214%22%3EImage Error%3C/text%3E%3C/svg%3E'">
-        <div class="gallery-overlay">
-          <div class="gallery-icon">🔍</div>
-        </div>
-      </div>
-    `).join("");
-  }
-
-  renderTechnicalTraining();
-  renderGallery();
-  renderDocuments();
-  renderProjects();
-
-  // Render certifications in CV section
   function renderCvCertifications() {
     const container = document.getElementById("cvCertificationsGrid");
     if (!container) return;
 
     const allCerts = [...CERTIFICATIONS];
-    container.innerHTML = allCerts.map((doc, idx) => {
+    container.innerHTML = allCerts.map((doc) => {
       if (doc.file) {
         return `
           <a class="cert-item" href="docs/${doc.file}" target="_blank" rel="noopener" title="${doc.name}">
@@ -1691,9 +1635,13 @@
           </div>
         `;
       }
+      return "";
     }).join("");
   }
 
+  renderDocuments();
+  renderTechnicalTraining();
+  renderGallery();
   renderCvCertifications();
   setupCvDownload();
 
@@ -1704,13 +1652,11 @@
     if (e) e.preventDefault();
     const btn = document.getElementById("downloadCvBtn");
     const text = document.getElementById("downloadText");
-    
-    // Animate button
+
     btn.style.pointerEvents = "none";
     text.textContent = "Generating...";
     btn.classList.add("loading");
-    
-    // Harvard Format CV HTML
+
     const cvHTML = `
       <!DOCTYPE html>
       <html lang="en">
@@ -1719,8 +1665,8 @@
         <title>Amy Valentina Veraza García - CV</title>
         <style>
           * { margin: 0; padding: 0; box-sizing: border-box; }
-          body { 
-            font-family: 'Times New Roman', Times, serif; 
+          body {
+            font-family: 'Times New Roman', Times, serif;
             line-height: 1.5;
             color: #000;
             padding: 40px;
@@ -1729,10 +1675,10 @@
           }
           h1 { font-size: 18pt; text-align: center; font-weight: bold; margin-bottom: 2pt; }
           .contact { text-align: center; font-size: 10pt; margin-bottom: 12pt; }
-          h2 { 
-            font-size: 12pt; 
-            font-weight: bold; 
-            margin-top: 12pt; 
+          h2 {
+            font-size: 12pt;
+            font-weight: bold;
+            margin-top: 12pt;
             margin-bottom: 6pt;
             padding-bottom: 2pt;
             border-bottom: 1px solid #000;
@@ -1759,14 +1705,14 @@
 
         <h2>Professional Summary</h2>
         <p style="font-size: 10pt; margin-bottom: 6pt;">
-          Junior backend-focused developer with professional experience building APIs, designing databases, and implementing web systems. 
+          Junior backend-focused developer with professional experience building APIs, designing databases, and implementing web systems.
           Strong expertise in PHP (Laravel, Symfony), C#, JavaScript/TypeScript, PostgreSQL, and SQL Server. Experienced in REST API development.
           Trained as Technician in Systems Maintenance & Microcomputers with knowledge of cybersecurity fundamentals, VPN configuration, and server administration.
           Proven ability to deliver features with clean architecture, comprehensive validation, and ownership mindset. Currently pursuing Computer Engineering degree at UNAM.
         </p>
 
         <h2>Professional Experience</h2>
-        
+
         <div class="entry">
           <div class="entry-head">
             <span class="entry-title">Junior Developer</span>
@@ -1900,15 +1846,10 @@
       </html>
     `;
 
-    // Create a temporary element
-    const element = document.createElement('div');
-    element.innerHTML = cvHTML;
-
     try {
-      // Load html2pdf library dynamically
       const script = document.createElement('script');
       script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
-      
+
       script.onload = () => {
         const opt = {
           margin: 0,
@@ -1921,20 +1862,16 @@
         const docElement = document.createElement('div');
         docElement.innerHTML = cvHTML;
         document.body.appendChild(docElement);
-        
+
         html2pdf().set(opt).from(docElement).save().then(() => {
           document.body.removeChild(docElement);
-          // Reset button
           btn.style.pointerEvents = "auto";
           text.textContent = "✓ Download CV (Harvard Format)";
           btn.classList.remove("loading");
-          
-          setTimeout(() => {
-            text.textContent = "Download CV (Harvard Format)";
-          }, 3000);
+          setTimeout(() => { text.textContent = "Download CV (Harvard Format)"; }, 3000);
         });
       };
-      
+
       document.head.appendChild(script);
     } catch (err) {
       console.error('PDF generation failed:', err);
@@ -1943,7 +1880,6 @@
       btn.classList.remove("loading");
     }
   }
-
 
   // =============================
   // ✅ Schedule (YOUR CURRENT CLASSES)
@@ -1954,33 +1890,28 @@
   ];
   const DAYS = ["Mon","Tue","Wed","Thu","Fri", "Sat"];
 
-  // Based on what you shared:
-  // - Mon/Wed: Electricity & Magnetism 13:00–15:00
-  // - Tue/Thu: On-site class 07:00–08:30 (represented as 07–08 and 08–09)
-  // - Sat: Resources & Needs of Mexico 08:00–12:00
-  // - Extra classes from your previous schedule (Microprocessors/Networks) kept (hybrid evenings)
   const EVENTS = [
-    // Tue/Thu early class 07:00-08:30
+    // Tue/Thu: 07:00–08:30 (represented as 07–08 and 08–09)
     { day:"Tue", time:"07:00–08:00", title:"On-site Class", meta:"On-site", kind:"class", mode:"onsite" },
     { day:"Tue", time:"08:00–09:00", title:"On-site Class", meta:"On-site (until 08:30)", kind:"class", mode:"onsite" },
 
     { day:"Thu", time:"07:00–08:00", title:"On-site Class", meta:"On-site", kind:"class", mode:"onsite" },
     { day:"Thu", time:"08:00–09:00", title:"On-site Class", meta:"On-site (until 08:30)", kind:"class", mode:"onsite" },
 
-    // Mon/Wed Electricity & Magnetism 13:00–15:00
+    // Mon/Wed: Electricity & Magnetism 13:00–15:00
     { day:"Mon", time:"13:00–14:00", title:"Electricity & Magnetism", meta:"On-site", kind:"class", mode:"onsite" },
     { day:"Mon", time:"14:00–15:00", title:"Electricity & Magnetism", meta:"On-site", kind:"class", mode:"onsite" },
 
     { day:"Wed", time:"13:00–14:00", title:"Electricity & Magnetism", meta:"On-site", kind:"class", mode:"onsite" },
     { day:"Wed", time:"14:00–15:00", title:"Electricity & Magnetism", meta:"On-site", kind:"class", mode:"onsite" },
 
-    // Sat Resources & Needs of Mexico 08:00–12:00
-    { day:"Sat", time:"08:00–09:00", title:"Resources & Needs of Mexico", meta:"Class (On-site)", kind:"class", mode:"onsite" },
-    { day:"Sat", time:"09:00–10:00", title:"Resources & Needs of Mexico", meta:"Class (On-site)", kind:"class", mode:"onsite" },
-    { day:"Sat", time:"10:00–11:00", title:"Resources & Needs of Mexico", meta:"Class (On-site)", kind:"class", mode:"onsite" },
-    { day:"Sat", time:"11:00–12:00", title:"Resources & Needs of Mexico", meta:"Class (On-site)", kind:"class", mode:"onsite" },
+    // Sat: Resources & Needs of Mexico 08:00–12:00
+    { day:"Sat", time:"08:00–09:00", title:"Resources & Needs of Mexico", meta:"On-site", kind:"class", mode:"onsite" },
+    { day:"Sat", time:"09:00–10:00", title:"Resources & Needs of Mexico", meta:"On-site", kind:"class", mode:"onsite" },
+    { day:"Sat", time:"10:00–11:00", title:"Resources & Needs of Mexico", meta:"On-site", kind:"class", mode:"onsite" },
+    { day:"Sat", time:"11:00–12:00", title:"Resources & Needs of Mexico", meta:"On-site", kind:"class", mode:"onsite" },
 
-    // Keep your evening hybrid blocks you had before (optional but you included them)
+    // Evening hybrid blocks (kept)
     { day:"Tue", time:"17:30–18:00", title:"Microprocessors", meta:"Hybrid", kind:"class", mode:"hybrid" },
     { day:"Tue", time:"18:00–19:00", title:"Microprocessors", meta:"Hybrid", kind:"class", mode:"hybrid" },
     { day:"Tue", time:"19:00–20:00", title:"Secure Data Networks", meta:"Hybrid", kind:"class", mode:"hybrid" },
