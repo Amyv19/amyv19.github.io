@@ -557,6 +557,129 @@
 
   /* Small utilities */
   .nowrap{ white-space:nowrap; }
+
+  /* Documents Section */
+  .documents-section h3,
+  .gallery-section h3 {
+    font-size: 15px;
+    letter-spacing: .2px;
+    color: rgba(234,240,255,.92);
+    margin-bottom: 8px;
+  }
+
+  .docs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 12px;
+    margin-top: 12px;
+  }
+
+  .doc-item {
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.10);
+    border-radius: 14px;
+    padding: 12px;
+    text-align: center;
+    transition: transform .14s ease, box-shadow .14s ease, background .2s ease;
+    text-decoration: none;
+    color: rgba(234,240,255,.92);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .doc-item:hover {
+    transform: translateY(-3px);
+    background: rgba(255,255,255,.10);
+    border-color: rgba(108,124,255,.55);
+    box-shadow: 0 12px 24px rgba(108,124,255,.20);
+  }
+
+  .doc-icon {
+    font-size: 28px;
+    opacity: .9;
+  }
+
+  .doc-name {
+    font-weight: 900;
+    font-size: 12px;
+    word-break: break-word;
+    line-height: 1.3;
+    color: rgba(234,240,255,.88);
+  }
+
+  .doc-size {
+    font-size: 10px;
+    color: rgba(234,240,255,.65);
+    margin-top: 4px;
+  }
+
+  /* Gallery Grid */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+    margin-top: 12px;
+  }
+
+  .gallery-item {
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,.10);
+    background: rgba(255,255,255,.06);
+    aspect-ratio: 4 / 3;
+    cursor: pointer;
+    transition: transform .14s ease, box-shadow .14s ease;
+  }
+
+  .gallery-item:hover {
+    transform: scale(1.04);
+    box-shadow: 0 12px 28px rgba(108,124,255,.25);
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .3s ease;
+  }
+
+  .gallery-item:hover img {
+    transform: scale(1.05);
+  }
+
+  .gallery-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,.4);
+    opacity: 0;
+    transition: opacity .2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(2px);
+  }
+
+  .gallery-item:hover .gallery-overlay {
+    opacity: 1;
+  }
+
+  .gallery-icon {
+    font-size: 32px;
+    color: rgba(255,255,255,.9);
+  }
+
+  @media (max-width: 720px) {
+    .docs-grid {
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    }
+    .gallery-grid {
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    }
+  }
 </style>
 </head>
 
@@ -622,9 +745,9 @@
               Open CV
             </button>
 
-            <a class="btn" href="assets/docs/CV_AmyValentina.pdf" target="_blank" rel="noopener">
+            <a class="btn" id="downloadCvBtn" href="#" target="_blank" rel="noopener" download>
               <svg class="ico" viewBox="0 0 24 24" fill="none"><path d="M12 3v10m0 0l4-4m-4 4l-4-4M5 21h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Download PDF
+              Download CV
             </a>
 
             <a class="btn ghost" href="https://github.com/Amyv19" target="_blank" rel="noopener">
@@ -650,6 +773,23 @@
           <p class="big">Languages</p>
           <p class="small">Spanish (Native) • English (B2)</p>
         </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- DOCUMENTS SECTION -->
+      <div class="documents-section">
+        <h3 style="margin-top:0;">📄 Documentos & Certificaciones</h3>
+        <p class="muted">Descarga tus certificaciones, constancias y documentos profesionales:</p>
+        <div class="docs-grid" id="docsGrid"></div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- GALLERY SECTION -->
+      <div class="gallery-section">
+        <h3 style="margin-top:0;">🖼️ Galería de Imágenes</h3>
+        <div class="gallery-grid" id="galleryGrid"></div>
       </div>
     </div>
 
@@ -1090,6 +1230,128 @@
 
   applyInlineLogos();
   applyHeroFallback();
+
+  // =============================
+  // Dynamic Documents & Gallery Loading
+  // =============================
+
+  // List of documents (update these filenames to match your actual files)
+  const DOCUMENTS = [
+    { name: "Certification InAgent", file: "certification-Inagent-averaza@ctsolutionsmx.com.pdf" },
+    { name: "Certification InSpeech", file: "certification-Inspeech-averaza@ctsolutionsmx.com.pdf" },
+    { name: "Constancias Veraza García", file: "Constancias_Veraza Garcia Amy Valentina (3).pdf" },
+    { name: "IC InAgent - Amy Valentina", file: "IC_Inagent_Amy Valentina Veraza García.pdf" },
+    { name: "Inglés - Certificado", file: "ingles.pdf" },
+    { name: "Manual Portal", file: "Manual-Portal (1) (1).pdf" },
+    { name: "Plata Documentación", file: "Plata documentacion.pdf" },
+  ];
+
+  // List of images (update these filenames to match your actual files)
+  const GALLERY_IMAGES = [
+    "Foto perfil.jpg",
+    "carrera tecnica.png",
+    "WhatsApp Image 2026-03-04 at 12.38.06 AM.jpeg",
+    "WhatsApp Image 2026-03-04 at 12.38.16 AM.jpeg",
+    "WhatsApp Image 2026-03-04 at 12.38.25 AM.jpeg",
+    "WhatsApp Image 2026-03-04 at 12.38.36 AM.jpeg",
+  ];
+
+  function renderDocuments() {
+    const container = document.getElementById("docsGrid");
+    if (!container) return;
+
+    container.innerHTML = DOCUMENTS.map((doc, idx) => `
+      <a class="doc-item" href="docs/${doc.file}" target="_blank" rel="noopener">
+        <div class="doc-icon">📄</div>
+        <div class="doc-name">${doc.name}</div>
+        <div class="doc-size">PDF</div>
+      </a>
+    `).join("");
+  }
+
+  function renderGallery() {
+    const container = document.getElementById("galleryGrid");
+    if (!container) return;
+
+    container.innerHTML = GALLERY_IMAGES.map((img, idx) => `
+      <div class="gallery-item" onclick="openLightbox('img/${img}', '${img}')">
+        <img src="img/${img}" alt="Gallery image ${idx + 1}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 75%22%3E%3Crect fill=%22%230a1a3a%22 width=%22100%22 height=%2275%22/%3E%3Ctext x=%2250%22 y=%2240%22 text-anchor=%22middle%22 fill=%22%23b8c4ff%22 font-size=%2214%22%3EImage Error%3C/text%3E%3C/svg%3E'">
+        <div class="gallery-overlay">
+          <div class="gallery-icon">🔍</div>
+        </div>
+      </div>
+    `).join("");
+  }
+
+  function openLightbox(src, name) {
+    const lightbox = document.createElement("div");
+    lightbox.style.cssText = `
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      cursor: pointer;
+      backdrop-filter: blur(4px);
+    `;
+
+    const img = document.createElement("img");
+    img.src = src;
+    img.style.cssText = `
+      max-width: 90%;
+      max-height: 90vh;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.10);
+      box-shadow: 0 20px 60px rgba(0,0,0,.50);
+    `;
+
+    const close = document.createElement("button");
+    close.innerHTML = "×";
+    close.style.cssText = `
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 44px;
+      height: 44px;
+      border: none;
+      background: rgba(255,255,255,.10);
+      color: white;
+      font-size: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background .2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    `;
+    close.onmouseover = () => close.style.background = "rgba(255,255,255,.20)";
+    close.onmouseout = () => close.style.background = "rgba(255,255,255,.10)";
+    close.onclick = (e) => { e.stopPropagation(); lightbox.remove(); };
+
+    lightbox.appendChild(img);
+    lightbox.appendChild(close);
+    lightbox.onclick = () => lightbox.remove();
+
+    document.body.appendChild(lightbox);
+  }
+
+  // Setup CV download button to auto-detect first PDF
+  function setupCvDownload() {
+    const btn = document.getElementById("downloadCvBtn");
+    if (!btn) return;
+    
+    if (DOCUMENTS.length > 0) {
+      btn.href = `docs/${DOCUMENTS[0].file}`;
+      btn.download = `CV_${DOCUMENTS[0].name.replace(/\s+/g, "_")}.pdf`;
+    }
+  }
+
+  renderDocuments();
+  renderGallery();
+  setupCvDownload();
+
 
   // =============================
   // Schedule generation: everything free = Work
