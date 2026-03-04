@@ -944,7 +944,7 @@
 
       <!-- TECHNICAL TRAINING SECTION -->
       <div class="documents-section">
-        <h3 style="margin-top:0;">🎓 Technical Training</h3>
+        <h3 style="margin-top:0;">▲ Technical Training</h3>
         <p class="muted">Technician in Systems Maintenance & Microcomputers</p>
         <div class="gallery-grid" id="technicalTrainingGrid" style="grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));"></div>
       </div>
@@ -953,7 +953,7 @@
 
       <!-- FEATURED PROJECTS & ACHIEVEMENTS SECTION -->
       <div class="documents-section">
-        <h3 style="margin-top:0;">🚀 Featured Projects & Awards</h3>
+        <h3 style="margin-top:0;">◆ Featured Projects & Awards</h3>
         <p class="muted">Notable achievements and current projects:</p>
         <div class="projects-grid" id="projectsGrid"></div>
       </div>
@@ -962,7 +962,7 @@
 
       <!-- CERTIFICATIONS SECTION -->
       <div class="documents-section">
-        <h3 style="margin-top:0;">🏆 Professional Certifications</h3>
+        <h3 style="margin-top:0;">★ Professional Certifications</h3>
         <p class="muted">Download my certifications and professional credentials:</p>
         <div class="docs-grid" id="certificationsGrid"></div>
       </div>
@@ -971,7 +971,7 @@
 
       <!-- COMPLETED PROJECTS SECTION -->
       <div class="documents-section">
-        <h3 style="margin-top:0;">✅ Completed Work & Documentation</h3>
+        <h3 style="margin-top:0;">✓ Completed Work & Documentation</h3>
         <p class="muted">Projects and documentation I've worked on:</p>
         <div class="docs-grid" id="workDocsGrid"></div>
       </div>
@@ -1437,7 +1437,7 @@
   const PROJECTS = [
     { 
       title: "BLU AI - Hurricane Prediction System", 
-      award: "🚀 In Deployment",
+      award: "▸ In Deployment",
       desc: "AI-powered chatbot for hurricane prediction and analysis. Built with React, Llama Meta, and machine learning models.",
       tags: ["React", "Llama Meta", "AI", "Chatbot", "ML"] 
     },
@@ -1455,7 +1455,7 @@
     },
     { 
       title: "NASA Space Hackathon", 
-      award: "🌌 Participant",
+      award: "★ Participant",
       desc: "Participated in NASA space technology hackathon, focusing on innovative solutions for space exploration challenges.",
       tags: ["NASA", "Space", "Hackathon", "Innovation"] 
     },
@@ -1463,9 +1463,9 @@
 
   // Completed Work & Documentation (manuals and guides)
   const WORK_DOCUMENTS = [
-    { name: "Portal Manual", file: "Manual-Portal (1) (1).pdf", icon: "📘" },
-    { name: "Ludoteca Manual", file: "Manual Ludoteca.pdf", icon: "📗" },
-    { name: "Platform Documentation", file: "Plata documentacion.pdf", icon: "📕" },
+    { name: "Portal Manual", file: "Manual-Portal (1) (1).pdf", icon: "[PDF]" },
+    { name: "Ludoteca Manual", file: "Manual Ludoteca.pdf", icon: "[PDF]" },
+    { name: "Platform Documentation", file: "Plata documentacion.pdf", icon: "[PDF]" },
   ];
 
   // Technical Training Images
@@ -1491,7 +1491,7 @@
         if (doc.file) {
           return `
             <a class="doc-item" href="docs/${doc.file}" target="_blank" rel="noopener">
-              <div class="doc-icon">🎓</div>
+              <div class="doc-icon">[C]</div>
               <div class="doc-name">${doc.name}</div>
               <div class="doc-size">PDF</div>
             </a>
@@ -1499,7 +1499,7 @@
         } else if (doc.display) {
           return `
             <div class="doc-item" onclick="openLightbox('assets/img/${doc.display}', '${doc.name}')" style="cursor: pointer;">
-              <div class="doc-icon">🎓</div>
+              <div class="doc-icon">[C]</div>
               <div class="doc-name">${doc.name}</div>
               <div class="doc-size">Certificate</div>
             </div>
@@ -1513,7 +1513,7 @@
     if (workContainer) {
       workContainer.innerHTML = WORK_DOCUMENTS.map((doc, idx) => `
         <a class="doc-item" href="docs/${doc.file}" target="_blank" rel="noopener">
-          <div class="doc-icon">${doc.icon || "📘"}</div>
+          <div class="doc-icon">${doc.icon || "[D]"}</div>
           <div class="doc-name">${doc.name}</div>
           <div class="doc-size">PDF</div>
         </a>
@@ -1648,14 +1648,14 @@
       if (doc.file) {
         return `
           <a class="cert-item" href="docs/${doc.file}" target="_blank" rel="noopener" title="${doc.name}">
-            <div class="cert-icon">🎓</div>
+            <div class="cert-icon">[C]</div>
             <div style="font-size: 10px;">${doc.name.split(" ")[0]}</div>
           </a>
         `;
       } else if (doc.display) {
         return `
           <div class="cert-item" onclick="openLightbox('assets/img/${doc.display}', '${doc.name}')" title="${doc.name}" style="cursor: pointer;">
-            <div class="cert-icon">🎓</div>
+            <div class="cert-icon">[C]</div>
             <div style="font-size: 10px;">${doc.name}</div>
           </div>
         `;
@@ -1721,7 +1721,7 @@
         <h1>Amy Valentina Veraza García</h1>
         <div class="contact">
           Computer Engineering (UNAM) • Junior Developer<br>
-          Mexico City • averaza@comunidad.unam.mx • +52 (PHONE)<br>
+          Mexico City • averaza@comunidad.unam.mx • +52 5634369888<br>
           GitHub: github.com/Amyv19
         </div>
 
