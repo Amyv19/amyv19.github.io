@@ -565,6 +565,9 @@
     letter-spacing: .2px;
     color: rgba(234,240,255,.92);
     margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
 
   .docs-grid {
@@ -575,12 +578,12 @@
   }
 
   .doc-item {
-    background: rgba(255,255,255,.06);
-    border: 1px solid rgba(255,255,255,.10);
+    background: linear-gradient(135deg, rgba(108,124,255,.12), rgba(34,211,238,.08));
+    border: 1px solid rgba(108,124,255,.25);
     border-radius: 14px;
-    padding: 12px;
+    padding: 14px;
     text-align: center;
-    transition: transform .14s ease, box-shadow .14s ease, background .2s ease;
+    transition: transform .14s ease, box-shadow .14s ease, background .2s ease, border-color .2s ease;
     text-decoration: none;
     color: rgba(234,240,255,.92);
     display: flex;
@@ -590,15 +593,16 @@
   }
 
   .doc-item:hover {
-    transform: translateY(-3px);
-    background: rgba(255,255,255,.10);
+    transform: translateY(-4px);
+    background: linear-gradient(135deg, rgba(108,124,255,.18), rgba(34,211,238,.14));
     border-color: rgba(108,124,255,.55);
-    box-shadow: 0 12px 24px rgba(108,124,255,.20);
+    box-shadow: 0 12px 28px rgba(108,124,255,.25);
   }
 
   .doc-icon {
     font-size: 28px;
-    opacity: .9;
+    opacity: 1;
+    line-height: 1;
   }
 
   .doc-name {
@@ -611,15 +615,16 @@
 
   .doc-size {
     font-size: 10px;
-    color: rgba(234,240,255,.65);
+    color: rgba(108,124,255,.8);
     margin-top: 4px;
+    font-weight: 700;
   }
 
   /* Gallery Grid */
   .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 12px;
+    gap: 14px;
     margin-top: 12px;
   }
 
@@ -627,16 +632,17 @@
     position: relative;
     border-radius: 14px;
     overflow: hidden;
-    border: 1px solid rgba(255,255,255,.10);
-    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(108,124,255,.25);
+    background: linear-gradient(135deg, rgba(34,211,238,.10), rgba(108,124,255,.08));
     aspect-ratio: 4 / 3;
     cursor: pointer;
-    transition: transform .14s ease, box-shadow .14s ease;
+    transition: transform .14s ease, box-shadow .14s ease, border-color .2s ease;
   }
 
   .gallery-item:hover {
-    transform: scale(1.04);
-    box-shadow: 0 12px 28px rgba(108,124,255,.25);
+    transform: scale(1.05);
+    border-color: rgba(34,211,238,.55);
+    box-shadow: 0 12px 32px rgba(34,211,238,.30);
   }
 
   .gallery-item img {
@@ -648,13 +654,13 @@
   }
 
   .gallery-item:hover img {
-    transform: scale(1.05);
+    transform: scale(1.08);
   }
 
   .gallery-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(0,0,0,.4);
+    background: rgba(0,0,0,.5);
     opacity: 0;
     transition: opacity .2s ease;
     display: flex;
@@ -963,16 +969,25 @@
       <!-- CERTIFICATIONS SECTION -->
       <div class="documents-section">
         <h3 style="margin-top:0;">★ Professional Certifications</h3>
-        <p class="muted">Download my certifications and professional credentials:</p>
+        <p class="muted">Certifications, badges, and professional credentials:</p>
         <div class="docs-grid" id="certificationsGrid"></div>
       </div>
 
       <div class="divider"></div>
 
-      <!-- COMPLETED PROJECTS SECTION -->
+      <!-- CREDENTIALS & LEGAL DOCUMENTS -->
       <div class="documents-section">
-        <h3 style="margin-top:0;">✓ Completed Work & Documentation</h3>
-        <p class="muted">Projects and documentation I've worked on:</p>
+        <h3 style="margin-top:0;">📄 Credentials & Legal Documents</h3>
+        <p class="muted">Official credentials and certifications with constancias:</p>
+        <div class="docs-grid" id="credentialsGrid"></div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- MANUALS & DOCUMENTATION -->
+      <div class="documents-section">
+        <h3 style="margin-top:0;">📚 Manuals & Documentation</h3>
+        <p class="muted">Technical guides and documentation from my work:</p>
         <div class="docs-grid" id="workDocsGrid"></div>
       </div>
 
@@ -1423,14 +1438,20 @@
   // Dynamic Documents & Gallery Loading
   // =============================
 
-  // Professional Certifications
+  // Professional Certifications & Badges
   const CERTIFICATIONS = [
     { name: "InAgent Certification", file: "certification-Inagent-averaza@ctsolutionsmx.com.pdf" },
     { name: "InSpeech Certification", file: "certification-Inspeech-averaza@ctsolutionsmx.com.pdf" },
     { name: "IC InAgent", file: "IC_Inagent_Amy Valentina Veraza García.pdf" },
     { name: "English B2", file: "ingles.pdf" },
-    { name: "Work Credentials", file: "Constancias_Veraza Garcia Amy Valentina (3).pdf" },
     { name: "Scrum Foundation", display: "scrum.png" },
+    { name: "PHP Certification", display: "php.png" },
+    { name: "SRCUM Certification", display: "srcum.png" },
+  ];
+
+  // Credentials & Legal Documents
+  const CREDENTIALS_DOCUMENTS = [
+    { name: "Work Credentials", file: "Constancias_Veraza Garcia Amy Valentina (3).pdf", icon: "📄" },
   ];
 
   // Featured Projects & Awards
@@ -1476,7 +1497,6 @@
   // Photo Gallery
   const GALLERY_IMAGES = [
     { name: "profile.jpg", display: "Profile Photo" },
-    { name: "php.png", display: "PHP Certification" },
     { name: "img1.jpeg", display: "Gallery 1" },
     { name: "img2.jpeg", display: "Gallery 2" },
     { name: "img3.jpeg", display: "Gallery 3" },
@@ -1490,32 +1510,44 @@
       certContainer.innerHTML = CERTIFICATIONS.map((doc, idx) => {
         if (doc.file) {
           return `
-            <a class="doc-item" href="docs/${doc.file}" target="_blank" rel="noopener">
-              <div class="doc-icon">[C]</div>
+            <a class="doc-item" href="docs/${doc.file}" target="_blank" rel="noopener" title="${doc.name}">
+              <div class="doc-icon">🏆</div>
               <div class="doc-name">${doc.name}</div>
               <div class="doc-size">PDF</div>
             </a>
           `;
         } else if (doc.display) {
           return `
-            <div class="doc-item" onclick="openLightbox('assets/img/${doc.display}', '${doc.name}')" style="cursor: pointer;">
-              <div class="doc-icon">[C]</div>
+            <div class="doc-item" onclick="openLightbox('assets/img/${doc.display}', '${doc.name}')" style="cursor: pointer;" title="${doc.name}">
+              <div class="doc-icon">🏆</div>
               <div class="doc-name">${doc.name}</div>
-              <div class="doc-size">Certificate</div>
+              <div class="doc-size">Badge</div>
             </div>
           `;
         }
       }).join("");
     }
 
-    // Render work documents
+    // Render credentials & legal documents
+    const credentialsContainer = document.getElementById("credentialsGrid");
+    if (credentialsContainer) {
+      credentialsContainer.innerHTML = CREDENTIALS_DOCUMENTS.map((doc, idx) => `
+        <a class="doc-item" href="docs/${doc.file}" target="_blank" rel="noopener" title="${doc.name}">
+          <div class="doc-icon">${doc.icon || "📋"}</div>
+          <div class="doc-name">${doc.name}</div>
+          <div class="doc-size">PDF</div>
+        </a>
+      `).join("");
+    }
+
+    // Render work documents (manuals)
     const workContainer = document.getElementById("workDocsGrid");
     if (workContainer) {
       workContainer.innerHTML = WORK_DOCUMENTS.map((doc, idx) => `
-        <a class="doc-item" href="docs/${doc.file}" target="_blank" rel="noopener">
-          <div class="doc-icon">${doc.icon || "[D]"}</div>
+        <a class="doc-item" href="docs/${doc.file}" target="_blank" rel="noopener" title="${doc.name}">
+          <div class="doc-icon">📘</div>
           <div class="doc-name">${doc.name}</div>
-          <div class="doc-size">PDF</div>
+          <div class="doc-size">Manual</div>
         </a>
       `).join("");
     }
