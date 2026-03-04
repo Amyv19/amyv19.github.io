@@ -713,6 +713,90 @@
     opacity: .95;
   }
 
+  /* Projects Grid */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 14px;
+    margin-top: 12px;
+  }
+
+  .project-card {
+    background: linear-gradient(135deg, rgba(34,211,238,.12), rgba(108,124,255,.10));
+    border: 1px solid rgba(34,211,238,.35);
+    border-radius: 16px;
+    padding: 16px;
+    transition: transform .14s ease, box-shadow .14s ease, border-color .2s ease;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, rgba(34,211,238,.6), rgba(108,124,255,.6));
+  }
+
+  .project-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(34,211,238,.55);
+    box-shadow: 0 12px 28px rgba(34,211,238,.20);
+  }
+
+  .project-title {
+    font-weight: 950;
+    font-size: 13.5px;
+    margin: 0 0 6px;
+    color: rgba(234,240,255,.95);
+  }
+
+  .project-award {
+    display: inline-block;
+    background: linear-gradient(135deg, rgba(34,211,238,.25), rgba(34,197,94,.15));
+    border: 1px solid rgba(34,211,238,.45);
+    color: rgba(34,211,238,.95);
+    font-size: 11px;
+    font-weight: 900;
+    padding: 4px 8px;
+    border-radius: 20px;
+    margin-bottom: 8px;
+  }
+
+  .project-desc {
+    font-size: 12px;
+    line-height: 1.5;
+    color: rgba(234,240,255,.80);
+    margin: 8px 0;
+  }
+
+  .project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+  }
+
+  .project-badge {
+    display: inline-block;
+    background: rgba(108,124,255,.15);
+    border: 1px solid rgba(108,124,255,.30);
+    color: rgba(108,124,255,.95);
+    font-size: 10px;
+    font-weight: 800;
+    padding: 3px 6px;
+    border-radius: 10px;
+  }
+
+  @media (max-width: 720px) {
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
   /* Download Button Animation */
   .btn {
     position: relative;
@@ -863,6 +947,15 @@
         <h3 style="margin-top:0;">🎓 Technical Training</h3>
         <p class="muted">Technician in Systems Maintenance & Microcomputers</p>
         <div class="gallery-grid" id="technicalTrainingGrid" style="grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));"></div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- FEATURED PROJECTS & ACHIEVEMENTS SECTION -->
+      <div class="documents-section">
+        <h3 style="margin-top:0;">🚀 Featured Projects & Awards</h3>
+        <p class="muted">Notable achievements and current projects:</p>
+        <div class="projects-grid" id="projectsGrid"></div>
       </div>
 
       <div class="divider"></div>
@@ -1340,6 +1433,34 @@
     { name: "Scrum Foundation", display: "scrum.png" },
   ];
 
+  // Featured Projects & Awards
+  const PROJECTS = [
+    { 
+      title: "BLU AI - Hurricane Prediction System", 
+      award: "🚀 In Deployment",
+      desc: "AI-powered chatbot for hurricane prediction and analysis. Built with React, Llama Meta, and machine learning models.",
+      tags: ["React", "Llama Meta", "AI", "Chatbot", "ML"] 
+    },
+    { 
+      title: "META Winner - International Hackathon", 
+      award: "$2M Prize Pool",
+      desc: "International hackathon winner. Demonstrated innovative problem-solving and full-stack development capabilities.",
+      tags: ["Hackathon", "Winner", "META", "International"] 
+    },
+    { 
+      title: "Construyendo el Futuro Award", 
+      award: "$80,000 MXN",
+      desc: "Prestigious award for innovation and technological development. Recognized for outstanding contribution to future technologies.",
+      tags: ["Award", "Innovation", "Mexico"] 
+    },
+    { 
+      title: "NASA Space Hackathon", 
+      award: "🌌 Participant",
+      desc: "Participated in NASA space technology hackathon, focusing on innovative solutions for space exploration challenges.",
+      tags: ["NASA", "Space", "Hackathon", "Innovation"] 
+    },
+  ];
+
   // Completed Work & Documentation (manuals and guides)
   const WORK_DOCUMENTS = [
     { name: "Portal Manual", file: "Manual-Portal (1) (1).pdf", icon: "📘" },
@@ -1396,6 +1517,21 @@
           <div class="doc-name">${doc.name}</div>
           <div class="doc-size">PDF</div>
         </a>
+      `).join("");
+    }
+
+    // Render projects
+    const projectsContainer = document.getElementById("projectsGrid");
+    if (projectsContainer) {
+      projectsContainer.innerHTML = PROJECTS.map((project, idx) => `
+        <div class="project-card">
+          <div class="project-award">${project.award}</div>
+          <h3 class="project-title">${project.title}</h3>
+          <p class="project-desc">${project.desc}</p>
+          <div class="project-tech">
+            ${project.tags.map(tag => `<span class="project-badge">${tag}</span>`).join("")}
+          </div>
+        </div>
       `).join("");
     }
   }
@@ -1498,6 +1634,8 @@
 
   renderTechnicalTraining();
   renderGallery();
+  renderDocuments();
+  renderProjects();
   setupCvDownload();
 
   // Render certifications in CV section
@@ -1682,6 +1820,33 @@
             <p><b>Tools & Methods:</b> Git, Jira, Postman, Scrum, Linux, System Maintenance</p>
             <p><b>Technical Training:</b> Technician in Systems Maintenance & Microcomputers</p>
           </div>
+        </div>
+
+        <h2>Featured Projects & Awards</h2>
+        <div class="entry">
+          <div class="entry-head">
+            <span class="entry-title">BLU AI - Hurricane Prediction System</span>
+            <span class="entry-date">In Deployment</span>
+          </div>
+          <div class="entry-meta">AI-powered chatbot leveraging Llama Meta for hurricane prediction and analysis</div>
+          <p style="font-size: 10pt; margin: 4pt 0;">
+            React-based application integrating advanced machine learning models for real-time weather intelligence and disaster preparedness. Demonstrates expertise in full-stack development, AI/ML integration, and production-ready application deployment.
+          </p>
+        </div>
+
+        <div class="entry">
+          <div class="entry-title">META International Hackathon Winner</div>
+          <div class="entry-meta">International Competition • Prize Pool: $2,000,000 USD</div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-title">"Construyendo el Futuro" (Building the Future) Award</div>
+          <div class="entry-meta">Achievement Recognition • Prize: $80,000 MXN</div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-title">NASA Space Hackathon</div>
+          <div class="entry-meta">Participant in international space-themed competition</div>
         </div>
 
         <h2>Certifications</h2>
